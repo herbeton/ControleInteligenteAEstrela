@@ -1,0 +1,10 @@
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\bin\Debug\ControleInteligenteAEstrela.exe.config
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\bin\Debug\ControleInteligenteAEstrela.exe
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\bin\Debug\ControleInteligenteAEstrela.pdb
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.csprojResolveAssemblyReference.cache
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.Properties.Resources.resources
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.csproj.GenerateResource.Cache
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.exe
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.pdb
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.FormConfig.resources
+c:\users\herbeton\documents\visual studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.FormLabirinto.resources
