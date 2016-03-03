@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControleInteligenteAEstrela.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ControleInteligenteAEstrela
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -17,7 +18,6 @@ namespace ControleInteligenteAEstrela
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormConfig());
-            //Application.Run(new FormLabirinto());
         }
     }
 }

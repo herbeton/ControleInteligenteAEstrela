@@ -45,24 +45,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerLabirinto.cs" />
-    <Compile Include="FormConfig.cs">
+    <Compile Include="Model\Dominio\ParametrosFormConfig.cs" />
+    <Compile Include="View\FormConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConfig.Designer.cs">
+    <Compile Include="View\FormConfig.Designer.cs">
       <DependentUpon>FormConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLabirinto.cs">
+    <Compile Include="View\FormInicial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLabirinto.Designer.cs">
+    <Compile Include="View\FormInicial.Designer.cs">
+      <DependentUpon>FormInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormLabirinto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormLabirinto.Designer.cs">
       <DependentUpon>FormLabirinto.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormConfig.resx">
+    <EmbeddedResource Include="View\FormConfig.resx">
       <DependentUpon>FormConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLabirinto.resx">
+    <EmbeddedResource Include="View\FormInicial.resx">
+      <DependentUpon>FormInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormLabirinto.resx">
       <DependentUpon>FormLabirinto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -73,6 +83,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,6 +97,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Negocio\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Imaages\Labrinto.ico" />
+    <None Include="Resources\Labrinto.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
