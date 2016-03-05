@@ -121,7 +121,7 @@
             this.Name = "FormLabirinto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Labirinto";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AtivaVisibleFormInicial);
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLabirinto)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

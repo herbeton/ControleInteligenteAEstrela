@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,11 +19,24 @@ namespace ControleInteligenteAEstrela
         public FormConfig()
         {
             InitializeComponent();
+            controllerLabirinto = new ControllerLabirinto();
+            InicializaTextBoxsForm();
+        }
+
+        private void InicializaTextBoxsForm()
+        {
+            this.textBoxCustoDiagonal.Text = Properties.Settings.Default.CustoDiagonal;
+            this.textBoxCustoHorizontal.Text = Properties.Settings.Default.CustoHorizontal;
+            this.textBoxCustoVertical.Text = Properties.Settings.Default.CustoVertical;
+            this.textBoxNColunas.Text = Properties.Settings.Default.NColunas;
+            this.textBoxNLinhas.Text = Properties.Settings.Default.NLinhas;
         }
 
         public FormConfig(ControllerLabirinto controllerLabirinto)
         {
+            InitializeComponent();
             this.controllerLabirinto = controllerLabirinto;
+            InicializaTextBoxsForm();
         }
 
         private void adicionarArquivoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,6 +46,16 @@ namespace ControleInteligenteAEstrela
             openFile.ShowDialog();
             diretorioArquivoTxt = openFile.FileName;
             LerArquivoTxt(diretorioArquivoTxt);
+        }
+
+        private void SetPropertiesTextBox()
+        {
+            Properties.Settings.Default.NLinhas = this.textBoxNLinhas.Text;
+            Properties.Settings.Default.NColunas = this.textBoxNColunas.Text;
+            Properties.Settings.Default.CustoDiagonal = this.textBoxCustoDiagonal.Text;
+            Properties.Settings.Default.CustoHorizontal = this.textBoxCustoHorizontal.Text;
+            Properties.Settings.Default.CustoVertical = this.textBoxCustoVertical.Text;
+            Properties.Settings.Default.Upgrade();
         }
 
         private void LerArquivoTxt(String diretorio)
@@ -99,14 +123,15 @@ namespace ControleInteligenteAEstrela
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            controllerLabirinto.SetFormConfig(new FormLabirinto());
+            SetPropertiesTextBox();
+            controllerLabirinto.SetFormConfig(new FormLabirinto(controllerLabirinto));
             controllerLabirinto.GetFormLabirinto().Show();
             this.Close();
         }
 
         private void AtivaVisibleFormInicial(object sender, FormClosedEventArgs e)
         {
-            controllerLabirinto.GetFormInicial().Visible = true;
+            //controllerLabirinto.GetFormInicial().Visible = true;
         }
 
     }

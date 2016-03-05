@@ -17,7 +17,7 @@ namespace ControleInteligenteAEstrela
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormConfig());
+            Application.Run(new FormInicial());
         }
     }
 }

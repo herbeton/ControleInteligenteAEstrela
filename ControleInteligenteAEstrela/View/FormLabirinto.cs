@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControleInteligenteAEstrela.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,17 +14,29 @@ namespace ControleInteligenteAEstrela
     public partial class FormLabirinto : Form
     {
         private ControllerLabirinto controllerLabirinto;
+        private FormInicial formInicial;
+        private int numeroDeLinhas;
+        private int numeroDeColunas;
         public FormLabirinto()
         {
             InitializeComponent();
             controllerLabirinto = new ControllerLabirinto();
+            formInicial = new FormInicial(controllerLabirinto);
             AdicionarColunasLinhas();
+            dataGridViewLabirinto.ColumnHeadersVisible = false;
+            dataGridViewLabirinto.AutoGenerateColumns = false;
+            dataGridViewLabirinto.RowHeadersVisible = false;//desabilita a barra lateral do dataGridView
         }
 
         public FormLabirinto(ControllerLabirinto controllerLabirinto)
         {
-            // TODO: Complete member initialization
+            InitializeComponent();
             this.controllerLabirinto = controllerLabirinto;
+            numeroDeLinhas = 0;
+            AdicionarColunasLinhas();
+            dataGridViewLabirinto.ColumnHeadersVisible = false;
+            dataGridViewLabirinto.AutoGenerateColumns = false;
+            dataGridViewLabirinto.RowHeadersVisible = false;//desabilita a barra lateral do dataGridView
         }
 
         private void lerArquivoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -33,29 +46,44 @@ namespace ControleInteligenteAEstrela
 
         private void AdicionarColunasLinhas()
         {
-            DataTable table = new DataTable();
+            try
+            {
+                recebeBoleana = Int32.TryParse(Properties.Settings.Default.NLinhas, out numeroDeLinhas);
+                recebeBoleana = Int32.TryParse(Properties.Settings.Default.NColunas, out numeroDeColunas);
+                for (int i = 0; i < numeroDeColunas; i++)
+                {
+                    DataGridViewColumn column = new DataGridViewColumn();
+                    DataGridViewCell cell = new DataGridViewTextBoxCell();
+                    cell.Style.BackColor = Color.White;
+                    column.CellTemplate = cell;
+                    dataGridViewLabirinto.Columns.Add(column);
 
-            table.Columns.Add("");
-            table.Columns.Add("");
-            table.Rows.Add("Alex", 26);
-            table.Rows.Add("Jim", 36);
-            table.Rows.Add("Bob", 34);
-            table.Rows.Add("Mike", 47);
-            table.Rows.Add("", "");
-            table.Rows.Add("", "");
-            table.Rows.Add("", "");
-            table.Rows.Add("", "");
-            table.Rows.Add("Joe", 61);
+                }
 
-            this.dataGridViewLabirinto.DataSource = table;
-            dataGridViewLabirinto.ColumnHeadersVisible = false;
-            dataGridViewLabirinto.AutoGenerateColumns = false;
+                int tamanho = dataGridViewLabirinto.Columns[0].Width;
+
+                for (int j = 0; j < numeroDeLinhas; j++)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.Height = (int)tamanho;
+                    dataGridViewLabirinto.Rows.Add(row);
+                }
+                dataGridViewLabirinto.ClearSelection();
+
+            }
+            catch (ArgumentOutOfRangeException) { }
+            catch (FormatException) { }
 
         }
 
         private void AtivaVisibleFormInicial(object sender, FormClosedEventArgs e)
         {
-            controllerLabirinto.GetFormInicial().Visible = true;
+            //controllerLabirinto.SetFormInicial(formInicial);
+            //controllerLabirinto.GetFormInicial().Visible = true;
         }
+
+        public bool pr { get; set; }
+
+        public bool recebeBoleana { get; set; }
     }
 }

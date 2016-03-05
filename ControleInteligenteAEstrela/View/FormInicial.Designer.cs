@@ -58,12 +58,15 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.arquivoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(279, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(81, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,7 +107,7 @@
             this.btnConfig.Location = new System.Drawing.Point(146, 141);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(121, 23);
-            this.btnConfig.TabIndex = 2;
+            this.btnConfig.TabIndex = 1;
             this.btnConfig.Text = "Configuração";
             this.btnConfig.UseVisualStyleBackColor = true;
             this.btnConfig.Click += new System.EventHandler(this.button1_Click);
@@ -114,7 +117,7 @@
             this.btnLabrinto.Location = new System.Drawing.Point(12, 141);
             this.btnLabrinto.Name = "btnLabrinto";
             this.btnLabrinto.Size = new System.Drawing.Size(128, 23);
-            this.btnLabrinto.TabIndex = 3;
+            this.btnLabrinto.TabIndex = 0;
             this.btnLabrinto.Text = "Labirinto";
             this.btnLabrinto.UseVisualStyleBackColor = true;
             this.btnLabrinto.Click += new System.EventHandler(this.btnLabrinto_Click);
@@ -156,6 +159,7 @@
             this.MaximumSize = new System.Drawing.Size(295, 210);
             this.MinimumSize = new System.Drawing.Size(295, 210);
             this.Name = "FormInicial";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Labirinto Inteligente";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

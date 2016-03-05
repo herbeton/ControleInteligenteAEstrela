@@ -60,21 +60,21 @@
             this.textBoxNColunas.Location = new System.Drawing.Point(139, 119);
             this.textBoxNColunas.Name = "textBoxNColunas";
             this.textBoxNColunas.Size = new System.Drawing.Size(114, 20);
-            this.textBoxNColunas.TabIndex = 0;
+            this.textBoxNColunas.TabIndex = 1;
             // 
             // textBoxCustoVertical
             // 
             this.textBoxCustoVertical.Location = new System.Drawing.Point(139, 145);
             this.textBoxCustoVertical.Name = "textBoxCustoVertical";
             this.textBoxCustoVertical.Size = new System.Drawing.Size(114, 20);
-            this.textBoxCustoVertical.TabIndex = 1;
+            this.textBoxCustoVertical.TabIndex = 2;
             // 
             // textBoxCustoHorizontal
             // 
             this.textBoxCustoHorizontal.Location = new System.Drawing.Point(139, 197);
             this.textBoxCustoHorizontal.Name = "textBoxCustoHorizontal";
             this.textBoxCustoHorizontal.Size = new System.Drawing.Size(114, 20);
-            this.textBoxCustoHorizontal.TabIndex = 2;
+            this.textBoxCustoHorizontal.TabIndex = 4;
             // 
             // labelNColunas
             // 
@@ -90,7 +90,7 @@
             this.textBoxCustoDiagonal.Location = new System.Drawing.Point(139, 171);
             this.textBoxCustoDiagonal.Name = "textBoxCustoDiagonal";
             this.textBoxCustoDiagonal.Size = new System.Drawing.Size(114, 20);
-            this.textBoxCustoDiagonal.TabIndex = 4;
+            this.textBoxCustoDiagonal.TabIndex = 3;
             // 
             // labelCustoVertical
             // 
@@ -167,7 +167,7 @@
             this.textBoxNLinhas.Location = new System.Drawing.Point(139, 93);
             this.textBoxNLinhas.Name = "textBoxNLinhas";
             this.textBoxNLinhas.Size = new System.Drawing.Size(114, 20);
-            this.textBoxNLinhas.TabIndex = 13;
+            this.textBoxNLinhas.TabIndex = 0;
             // 
             // menuStripConfig
             // 
@@ -225,7 +225,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(6, 227);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(120, 23);
-            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -234,7 +234,7 @@
             this.btnConfirmar.Location = new System.Drawing.Point(139, 226);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(114, 23);
-            this.btnConfirmar.TabIndex = 16;
+            this.btnConfirmar.TabIndex = 5;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
@@ -269,7 +269,7 @@
             this.Name = "FormConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações do labirinto";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AtivaVisibleFormInicial);
+            this.TopMost = true;
             this.menuStripConfig.ResumeLayout(false);
             this.menuStripConfig.PerformLayout();
             this.ResumeLayout(false);

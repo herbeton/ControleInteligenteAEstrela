@@ -18,6 +18,11 @@ namespace ControleInteligenteAEstrela.View
             InitializeComponent();
             controllerLabirinto = new ControllerLabirinto();
         }
+        public FormInicial(ControllerLabirinto controllerLabirinto)
+        {
+            InitializeComponent();
+            this.controllerLabirinto = controllerLabirinto;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
