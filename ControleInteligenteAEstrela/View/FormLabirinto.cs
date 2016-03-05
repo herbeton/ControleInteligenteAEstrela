@@ -17,6 +17,7 @@ namespace ControleInteligenteAEstrela
         private FormInicial formInicial;
         private int numeroDeLinhas;
         private int numeroDeColunas;
+        private bool recebeBoleana;
         public FormLabirinto()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace ControleInteligenteAEstrela
             dataGridViewLabirinto.ColumnHeadersVisible = false;
             dataGridViewLabirinto.AutoGenerateColumns = false;
             dataGridViewLabirinto.RowHeadersVisible = false;//desabilita a barra lateral do dataGridView
+            dataGridViewLabirinto.ReadOnly = true;
         }
 
         public FormLabirinto(ControllerLabirinto controllerLabirinto)
@@ -37,6 +39,7 @@ namespace ControleInteligenteAEstrela
             dataGridViewLabirinto.ColumnHeadersVisible = false;
             dataGridViewLabirinto.AutoGenerateColumns = false;
             dataGridViewLabirinto.RowHeadersVisible = false;//desabilita a barra lateral do dataGridView
+            dataGridViewLabirinto.ReadOnly = true;
         }
 
         private void lerArquivoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -54,18 +57,18 @@ namespace ControleInteligenteAEstrela
                 {
                     DataGridViewColumn column = new DataGridViewColumn();
                     DataGridViewCell cell = new DataGridViewTextBoxCell();
-                    cell.Style.BackColor = Color.White;
+                    cell.Style.BackColor = Color.LightSteelBlue;
                     column.CellTemplate = cell;
+                    column.Width = 30;
+                    column.Resizable = DataGridViewTriState.False;
                     dataGridViewLabirinto.Columns.Add(column);
-
                 }
 
-                int tamanho = dataGridViewLabirinto.Columns[0].Width;
-
-                for (int j = 0; j < numeroDeLinhas; j++)
+                for (int j = 0; j < numeroDeLinhas - 1; j++)
                 {
                     DataGridViewRow row = new DataGridViewRow();
-                    row.Height = (int)tamanho;
+                    row.Height = 30;
+                    row.Resizable = DataGridViewTriState.False;
                     dataGridViewLabirinto.Rows.Add(row);
                 }
                 dataGridViewLabirinto.ClearSelection();
@@ -75,15 +78,5 @@ namespace ControleInteligenteAEstrela
             catch (FormatException) { }
 
         }
-
-        private void AtivaVisibleFormInicial(object sender, FormClosedEventArgs e)
-        {
-            //controllerLabirinto.SetFormInicial(formInicial);
-            //controllerLabirinto.GetFormInicial().Visible = true;
-        }
-
-        public bool pr { get; set; }
-
-        public bool recebeBoleana { get; set; }
     }
 }

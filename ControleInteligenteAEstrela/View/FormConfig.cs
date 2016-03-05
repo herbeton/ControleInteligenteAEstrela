@@ -25,7 +25,7 @@ namespace ControleInteligenteAEstrela
 
         private void InicializaTextBoxsForm()
         {
-            this.textBoxCustoDiagonal.Text = Properties.Settings.Default.CustoDiagonal;
+            this.textBoxCustoDiagonal.Text = Properties.Settings.Default.CustoDiagonal.ToString();
             this.textBoxCustoHorizontal.Text = Properties.Settings.Default.CustoHorizontal;
             this.textBoxCustoVertical.Text = Properties.Settings.Default.CustoVertical;
             this.textBoxNColunas.Text = Properties.Settings.Default.NColunas;
@@ -55,7 +55,6 @@ namespace ControleInteligenteAEstrela
             Properties.Settings.Default.CustoDiagonal = this.textBoxCustoDiagonal.Text;
             Properties.Settings.Default.CustoHorizontal = this.textBoxCustoHorizontal.Text;
             Properties.Settings.Default.CustoVertical = this.textBoxCustoVertical.Text;
-            Properties.Settings.Default.Upgrade();
         }
 
         private void LerArquivoTxt(String diretorio)
@@ -95,6 +94,7 @@ namespace ControleInteligenteAEstrela
 
         private void SetTextBoxs(List<string> bufferTexto)
         {
+            InicializaTextBoxsForm();
             textBoxNLinhas.Text = bufferTexto[0];
             textBoxNColunas.Text = bufferTexto[1];
             textBoxCustoHorizontal.Text = bufferTexto[2];
@@ -123,16 +123,18 @@ namespace ControleInteligenteAEstrela
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            SetPropertiesTextBox();
-            controllerLabirinto.SetFormConfig(new FormLabirinto(controllerLabirinto));
-            controllerLabirinto.GetFormLabirinto().Show();
-            this.Close();
+            if (textBoxCustoDiagonal.Text != "" && textBoxCustoHorizontal.Text != "" && textBoxCustoVertical.Text != "" &&
+                textBoxNColunas.Text != "" && textBoxNLinhas.Text != "")
+            {
+                SetPropertiesTextBox();
+                controllerLabirinto.SetFormConfig(new FormLabirinto(controllerLabirinto));
+                controllerLabirinto.GetFormLabirinto().Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Preencha com valores em todos os campos!");
+            }
         }
-
-        private void AtivaVisibleFormInicial(object sender, FormClosedEventArgs e)
-        {
-            //controllerLabirinto.GetFormInicial().Visible = true;
-        }
-
     }
 }
