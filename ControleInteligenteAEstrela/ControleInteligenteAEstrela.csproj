@@ -46,6 +46,11 @@
   <ItemGroup>
     <Compile Include="Controller\ControllerLabirinto.cs" />
     <Compile Include="Model\Dominio\ParametrosFormConfig.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="View\FormConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,14 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,6 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Imaages\Labrinto.ico" />
+    <None Include="Resources\startLabirinto.png" />
+    <None Include="Resources\clearLabirinto32.png" />
+    <None Include="Resources\inicioLabirinto1.png" />
+    <None Include="Resources\fimLabirinto1.png" />
+    <None Include="Resources\muro20.png" />
     <None Include="Resources\Labrinto.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

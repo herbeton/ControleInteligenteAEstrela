@@ -37,8 +37,15 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.outrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelConfigLab = new System.Windows.Forms.Label();
+            this.btnMuro = new System.Windows.Forms.Button();
+            this.btnInicio = new System.Windows.Forms.Button();
+            this.btnFim = new System.Windows.Forms.Button();
+            this.btnComecaoLabirinto = new System.Windows.Forms.Button();
+            this.btnLimparLabirinto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLabirinto)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.flowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewLabirinto
@@ -49,7 +56,7 @@
             this.dataGridViewLabirinto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewLabirinto.Location = new System.Drawing.Point(12, 27);
             this.dataGridViewLabirinto.Name = "dataGridViewLabirinto";
-            this.dataGridViewLabirinto.Size = new System.Drawing.Size(438, 265);
+            this.dataGridViewLabirinto.Size = new System.Drawing.Size(553, 364);
             this.dataGridViewLabirinto.TabIndex = 0;
             // 
             // menuStrip1
@@ -60,7 +67,7 @@
             this.outrosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(640, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(755, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -102,17 +109,81 @@
             // 
             this.flowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(456, 27);
+            this.flowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flowLayoutPanel.Controls.Add(this.btnMuro);
+            this.flowLayoutPanel.Controls.Add(this.btnInicio);
+            this.flowLayoutPanel.Controls.Add(this.btnFim);
+            this.flowLayoutPanel.Controls.Add(this.btnComecaoLabirinto);
+            this.flowLayoutPanel.Controls.Add(this.btnLimparLabirinto);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(571, 54);
+            this.flowLayoutPanel.MaximumSize = new System.Drawing.Size(172, 121);
+            this.flowLayoutPanel.MinimumSize = new System.Drawing.Size(172, 121);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(172, 265);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(172, 121);
             this.flowLayoutPanel.TabIndex = 2;
+            // 
+            // labelConfigLab
+            // 
+            this.labelConfigLab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelConfigLab.AutoSize = true;
+            this.labelConfigLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConfigLab.Location = new System.Drawing.Point(575, 34);
+            this.labelConfigLab.Name = "labelConfigLab";
+            this.labelConfigLab.Size = new System.Drawing.Size(177, 17);
+            this.labelConfigLab.TabIndex = 3;
+            this.labelConfigLab.Text = "Configurações do labirinto:";
+            // 
+            // btnMuro
+            // 
+            this.btnMuro.Image = global::ControleInteligenteAEstrela.Properties.Resources.muro20;
+            this.btnMuro.Location = new System.Drawing.Point(3, 3);
+            this.btnMuro.Name = "btnMuro";
+            this.btnMuro.Size = new System.Drawing.Size(49, 53);
+            this.btnMuro.TabIndex = 1;
+            this.btnMuro.UseVisualStyleBackColor = true;
+            // 
+            // btnInicio
+            // 
+            this.btnInicio.Image = global::ControleInteligenteAEstrela.Properties.Resources.inicioLabirinto1;
+            this.btnInicio.Location = new System.Drawing.Point(58, 3);
+            this.btnInicio.Name = "btnInicio";
+            this.btnInicio.Size = new System.Drawing.Size(49, 53);
+            this.btnInicio.TabIndex = 0;
+            this.btnInicio.UseVisualStyleBackColor = true;
+            // 
+            // btnFim
+            // 
+            this.btnFim.Image = global::ControleInteligenteAEstrela.Properties.Resources.fimLabirinto1;
+            this.btnFim.Location = new System.Drawing.Point(113, 3);
+            this.btnFim.Name = "btnFim";
+            this.btnFim.Size = new System.Drawing.Size(49, 53);
+            this.btnFim.TabIndex = 2;
+            this.btnFim.UseVisualStyleBackColor = true;
+            // 
+            // btnComecaoLabirinto
+            // 
+            this.btnComecaoLabirinto.Image = global::ControleInteligenteAEstrela.Properties.Resources.startLabirinto;
+            this.btnComecaoLabirinto.Location = new System.Drawing.Point(3, 62);
+            this.btnComecaoLabirinto.Name = "btnComecaoLabirinto";
+            this.btnComecaoLabirinto.Size = new System.Drawing.Size(78, 46);
+            this.btnComecaoLabirinto.TabIndex = 3;
+            this.btnComecaoLabirinto.UseVisualStyleBackColor = true;
+            // 
+            // btnLimparLabirinto
+            // 
+            this.btnLimparLabirinto.Image = global::ControleInteligenteAEstrela.Properties.Resources.clearLabirinto32;
+            this.btnLimparLabirinto.Location = new System.Drawing.Point(87, 62);
+            this.btnLimparLabirinto.Name = "btnLimparLabirinto";
+            this.btnLimparLabirinto.Size = new System.Drawing.Size(78, 46);
+            this.btnLimparLabirinto.TabIndex = 4;
+            this.btnLimparLabirinto.UseVisualStyleBackColor = true;
             // 
             // FormLabirinto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 304);
+            this.ClientSize = new System.Drawing.Size(755, 403);
+            this.Controls.Add(this.labelConfigLab);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.dataGridViewLabirinto);
             this.Controls.Add(this.menuStrip1);
@@ -126,6 +197,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLabirinto)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.flowLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,6 +213,12 @@
         private System.Windows.Forms.ToolStripMenuItem outrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private System.Windows.Forms.Button btnInicio;
+        private System.Windows.Forms.Button btnMuro;
+        private System.Windows.Forms.Button btnFim;
+        private System.Windows.Forms.Label labelConfigLab;
+        private System.Windows.Forms.Button btnComecaoLabirinto;
+        private System.Windows.Forms.Button btnLimparLabirinto;
     }
 }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConfig));
             this.textBoxNColunas = new System.Windows.Forms.TextBox();
             this.textBoxCustoVertical = new System.Windows.Forms.TextBox();
             this.textBoxCustoHorizontal = new System.Windows.Forms.TextBox();
@@ -171,8 +172,6 @@
             // 
             // menuStripConfig
             // 
-            this.menuStripConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.arquivoToolStripMenuItem});
             this.menuStripConfig.Location = new System.Drawing.Point(0, 0);
             this.menuStripConfig.Name = "menuStripConfig";
             this.menuStripConfig.Size = new System.Drawing.Size(265, 24);
@@ -261,6 +260,7 @@
             this.Controls.Add(this.textBoxCustoVertical);
             this.Controls.Add(this.textBoxNColunas);
             this.Controls.Add(this.menuStripConfig);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripConfig;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(281, 301);
