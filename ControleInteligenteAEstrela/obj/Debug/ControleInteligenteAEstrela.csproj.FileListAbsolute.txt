@@ -8,3 +8,4 @@ C:\Users\Herbeton\Documents\Visual Studio 2013\Projects\ControleInteligenteAEstr
 C:\Users\Herbeton\Documents\Visual Studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.csproj.GenerateResource.Cache
 C:\Users\Herbeton\Documents\Visual Studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.exe
 C:\Users\Herbeton\Documents\Visual Studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.pdb
+C:\Users\Herbeton\Documents\Visual Studio 2013\Projects\ControleInteligenteAEstrela\ControleInteligenteAEstrela\obj\Debug\ControleInteligenteAEstrela.csprojResolveAssemblyReference.cache

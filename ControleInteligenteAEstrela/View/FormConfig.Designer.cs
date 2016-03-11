@@ -43,7 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxNLinhas = new System.Windows.Forms.TextBox();
-            this.menuStripConfig = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionarArquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salvarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +52,12 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
+            this.menuStripConfig = new System.Windows.Forms.MenuStrip();
+            this.arquivoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salvarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripConfig.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,14 +175,6 @@
             this.textBoxNLinhas.Size = new System.Drawing.Size(114, 20);
             this.textBoxNLinhas.TabIndex = 0;
             // 
-            // menuStripConfig
-            // 
-            this.menuStripConfig.Location = new System.Drawing.Point(0, 0);
-            this.menuStripConfig.Name = "menuStripConfig";
-            this.menuStripConfig.Size = new System.Drawing.Size(265, 24);
-            this.menuStripConfig.TabIndex = 14;
-            this.menuStripConfig.Text = "menuStrip1";
-            // 
             // arquivoToolStripMenuItem
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -238,6 +235,53 @@
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
+            // menuStripConfig
+            // 
+            this.menuStripConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arquivoToolStripMenuItem1});
+            this.menuStripConfig.Location = new System.Drawing.Point(0, 0);
+            this.menuStripConfig.Name = "menuStripConfig";
+            this.menuStripConfig.Size = new System.Drawing.Size(265, 24);
+            this.menuStripConfig.TabIndex = 14;
+            this.menuStripConfig.Text = "menuStrip1";
+            // 
+            // arquivoToolStripMenuItem1
+            // 
+            this.arquivoToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirToolStripMenuItem,
+            this.salvarToolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.sairToolStripMenuItem1});
+            this.arquivoToolStripMenuItem1.Name = "arquivoToolStripMenuItem1";
+            this.arquivoToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
+            this.arquivoToolStripMenuItem1.Text = "Arquivo";
+            // 
+            // abrirToolStripMenuItem
+            // 
+            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.abrirToolStripMenuItem.Text = "Abrir";
+            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.adicionarArquivoToolStripMenuItem_Click);
+            // 
+            // salvarToolStripMenuItem1
+            // 
+            this.salvarToolStripMenuItem1.Name = "salvarToolStripMenuItem1";
+            this.salvarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.salvarToolStripMenuItem1.Text = "Salvar";
+            this.salvarToolStripMenuItem1.Click += new System.EventHandler(this.salvarToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // sairToolStripMenuItem1
+            // 
+            this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
+            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.sairToolStripMenuItem1.Text = "Sair";
+            this.sairToolStripMenuItem1.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
             // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,7 +337,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxNLinhas;
-        private System.Windows.Forms.MenuStrip menuStripConfig;
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adicionarArquivoToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -303,5 +346,11 @@
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnConfirmar;
+        private System.Windows.Forms.MenuStrip menuStripConfig;
+        private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salvarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem1;
     }
 }
