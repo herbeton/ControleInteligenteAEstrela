@@ -37,13 +37,13 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.outrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnMuro = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.btnFim = new System.Windows.Forms.Button();
+            this.btnMuro = new System.Windows.Forms.Button();
             this.btnComecaoLabirinto = new System.Windows.Forms.Button();
             this.btnLimparUmaCelula = new System.Windows.Forms.Button();
-            this.labelConfigLab = new System.Windows.Forms.Label();
             this.btnLimparodoLabirinto = new System.Windows.Forms.Button();
+            this.labelConfigLab = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLabirinto)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
@@ -59,6 +59,8 @@
             this.dataGridViewLabirinto.Name = "dataGridViewLabirinto";
             this.dataGridViewLabirinto.Size = new System.Drawing.Size(553, 364);
             this.dataGridViewLabirinto.TabIndex = 0;
+            this.dataGridViewLabirinto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CelulaClicada);
+            this.dataGridViewLabirinto.MouseCaptureChanged += new System.EventHandler(this.MovimentoMouse);
             // 
             // menuStrip1
             // 
@@ -111,9 +113,9 @@
             this.flowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel.Controls.Add(this.btnMuro);
             this.flowLayoutPanel.Controls.Add(this.btnInicio);
             this.flowLayoutPanel.Controls.Add(this.btnFim);
+            this.flowLayoutPanel.Controls.Add(this.btnMuro);
             this.flowLayoutPanel.Controls.Add(this.btnComecaoLabirinto);
             this.flowLayoutPanel.Controls.Add(this.btnLimparUmaCelula);
             this.flowLayoutPanel.Controls.Add(this.btnLimparodoLabirinto);
@@ -124,32 +126,35 @@
             this.flowLayoutPanel.Size = new System.Drawing.Size(172, 121);
             this.flowLayoutPanel.TabIndex = 2;
             // 
-            // btnMuro
-            // 
-            this.btnMuro.Image = global::ControleInteligenteAEstrela.Properties.Resources.muro20;
-            this.btnMuro.Location = new System.Drawing.Point(3, 3);
-            this.btnMuro.Name = "btnMuro";
-            this.btnMuro.Size = new System.Drawing.Size(49, 53);
-            this.btnMuro.TabIndex = 1;
-            this.btnMuro.UseVisualStyleBackColor = true;
-            // 
             // btnInicio
             // 
             this.btnInicio.Image = global::ControleInteligenteAEstrela.Properties.Resources.inicioLabirinto1;
-            this.btnInicio.Location = new System.Drawing.Point(58, 3);
+            this.btnInicio.Location = new System.Drawing.Point(3, 3);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(49, 53);
             this.btnInicio.TabIndex = 0;
             this.btnInicio.UseVisualStyleBackColor = true;
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
             // btnFim
             // 
             this.btnFim.Image = global::ControleInteligenteAEstrela.Properties.Resources.fimLabirinto1;
-            this.btnFim.Location = new System.Drawing.Point(113, 3);
+            this.btnFim.Location = new System.Drawing.Point(58, 3);
             this.btnFim.Name = "btnFim";
             this.btnFim.Size = new System.Drawing.Size(49, 53);
             this.btnFim.TabIndex = 2;
             this.btnFim.UseVisualStyleBackColor = true;
+            this.btnFim.Click += new System.EventHandler(this.btnFim_Click);
+            // 
+            // btnMuro
+            // 
+            this.btnMuro.Image = global::ControleInteligenteAEstrela.Properties.Resources.muro20;
+            this.btnMuro.Location = new System.Drawing.Point(113, 3);
+            this.btnMuro.Name = "btnMuro";
+            this.btnMuro.Size = new System.Drawing.Size(49, 53);
+            this.btnMuro.TabIndex = 1;
+            this.btnMuro.UseVisualStyleBackColor = true;
+            this.btnMuro.Click += new System.EventHandler(this.btnMuro_Click);
             // 
             // btnComecaoLabirinto
             // 
@@ -168,6 +173,17 @@
             this.btnLimparUmaCelula.TabIndex = 4;
             this.btnLimparUmaCelula.Text = "Limpar";
             this.btnLimparUmaCelula.UseVisualStyleBackColor = true;
+            this.btnLimparUmaCelula.Click += new System.EventHandler(this.btnLimparUmaCelula_Click);
+            // 
+            // btnLimparodoLabirinto
+            // 
+            this.btnLimparodoLabirinto.Location = new System.Drawing.Point(3, 91);
+            this.btnLimparodoLabirinto.Name = "btnLimparodoLabirinto";
+            this.btnLimparodoLabirinto.Size = new System.Drawing.Size(162, 23);
+            this.btnLimparodoLabirinto.TabIndex = 4;
+            this.btnLimparodoLabirinto.Text = "Limpar todo labirinto";
+            this.btnLimparodoLabirinto.UseVisualStyleBackColor = true;
+            this.btnLimparodoLabirinto.Click += new System.EventHandler(this.btnLimparodoLabirinto_Click);
             // 
             // labelConfigLab
             // 
@@ -179,15 +195,6 @@
             this.labelConfigLab.Size = new System.Drawing.Size(177, 17);
             this.labelConfigLab.TabIndex = 3;
             this.labelConfigLab.Text = "Configurações do labirinto:";
-            // 
-            // btnLimparodoLabirinto
-            // 
-            this.btnLimparodoLabirinto.Location = new System.Drawing.Point(3, 91);
-            this.btnLimparodoLabirinto.Name = "btnLimparodoLabirinto";
-            this.btnLimparodoLabirinto.Size = new System.Drawing.Size(162, 23);
-            this.btnLimparodoLabirinto.TabIndex = 4;
-            this.btnLimparodoLabirinto.Text = "Limpar todo labirinto";
-            this.btnLimparodoLabirinto.UseVisualStyleBackColor = true;
             // 
             // FormLabirinto
             // 
@@ -203,7 +210,6 @@
             this.Name = "FormLabirinto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Labirinto";
-            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLabirinto)).EndInit();
             this.menuStrip1.ResumeLayout(false);
