@@ -198,7 +198,7 @@ namespace ControleInteligenteAEstrela
 
         private void btnLimparUmaCelula_Click(object sender, EventArgs e)
         {
-            if (btnFimAtivo)
+            if (btnLimparUmaCelulaAtivo)
             {
                 btnLimparUmaCelulaAtivo = false;
             }

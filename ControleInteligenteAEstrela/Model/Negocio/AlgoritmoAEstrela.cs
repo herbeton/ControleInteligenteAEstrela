@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         public AlgoritmoAEstrela()
         {
             celulaFLinhaMin = new CelulaLabirinto();
+            listAbertos = new List<CelulaLabirinto>();
+            listFechados = new List<CelulaLabirinto>();
         }
 
         public DataGridView TabuleiroDoLabirinto
@@ -39,11 +42,6 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             set { listFechados = value; }
         }
 
-        public AlgoritmoAEstrela()
-        {
-            listAbertos = new List<CelulaLabirinto>();
-            listFechados = new List<CelulaLabirinto>();
-        }
 
         public void AplicaAlgoritmoAEstrela()
         {
@@ -72,6 +70,36 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             //remove o elemento com o indice da listaAbertos
             listAbertos.RemoveAt(indiceCelulaFLinhaMin);
             listFechados.Add(celulaFLinhaMin);
+            if (VerificaSeEhNoFinal())
+            {
+                MessageBox.Show("Chegou no ponto final!");
+                //fornecer a solução de percorrer ospontos da listFechada
+                ImprimirPontosDoInicioAoFim();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void ImprimirPontosDoInicioAoFim()
+        {
+            for (int i = 0; i < listFechados.Count; i++)
+            {
+                tabuleiroDoLabirinto.SelectedCells[i].Style.BackColor = Color.Gray;
+            }
+        }
+
+        private bool VerificaSeEhNoFinal()
+        {
+            if (celulaFLinhaMin.NomeCelula == "No final")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
