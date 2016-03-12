@@ -1,4 +1,5 @@
-﻿using ControleInteligenteAEstrela.Properties;
+﻿using ControleInteligenteAEstrela.Model.Dominio;
+using ControleInteligenteAEstrela.Properties;
 using ControleInteligenteAEstrela.View;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,10 @@ namespace ControleInteligenteAEstrela
         private int linhaCelulaSelecionadaAnteriorBtnFim;
         private int colunaCelulaSelecionadaAnteriorBtnFim;
         private bool btnFimAtivo;
+        private bool inicioInserido;
+        private bool fimInserido;
+        private CelulaLabirinto celulaInicialLabirinto;
+        private CelulaLabirinto celulaFinalLabirinto;
         public FormLabirinto()
         {
             InitializeComponent();
@@ -43,6 +48,10 @@ namespace ControleInteligenteAEstrela
             btnInicioAtivo = false;
             btnFimAtivo = false;
             btnLimparUmaCelulaAtivo = false;
+            inicioInserido = false;
+            fimInserido = false;
+            celulaFinalLabirinto = new CelulaLabirinto();
+            celulaInicialLabirinto = new CelulaLabirinto();
         }
 
         public FormLabirinto(ControllerLabirinto controllerLabirinto)
@@ -59,6 +68,8 @@ namespace ControleInteligenteAEstrela
             btnInicioAtivo = false;
             btnFimAtivo = false;
             btnLimparUmaCelulaAtivo = false;
+            inicioInserido = false;
+            fimInserido = false;
         }
 
         private void lerArquivoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,6 +122,7 @@ namespace ControleInteligenteAEstrela
                     dataGridViewLabirinto.Rows[linhaCelulaSelecionada].Cells[colunaCelulaSelecionada].Style.BackColor = Color.Green;
                     linhaCelulaSelecionadaAnteriorBtnInicio = linhaCelulaSelecionada;
                     colunaCelulaSelecionadaAnteriorBtnInicio = colunaCelulaSelecionada;
+                    inicioInserido = true;
 
                 }
                 else if (btnFimAtivo)
@@ -119,6 +131,7 @@ namespace ControleInteligenteAEstrela
                     dataGridViewLabirinto.Rows[linhaCelulaSelecionada].Cells[colunaCelulaSelecionada].Style.BackColor = Color.Red;
                     linhaCelulaSelecionadaAnteriorBtnFim = linhaCelulaSelecionada;
                     colunaCelulaSelecionadaAnteriorBtnFim = colunaCelulaSelecionada;
+                    fimInserido = true;
                 }
                 else if (btnMuroAtivo)
                 {
@@ -126,6 +139,14 @@ namespace ControleInteligenteAEstrela
                 }
                 else if (btnLimparUmaCelulaAtivo)
                 {
+                    if (dataGridViewLabirinto.Rows[linhaCelulaSelecionada].Cells[colunaCelulaSelecionada].Style.BackColor == Color.Green)
+                    {
+                        inicioInserido = false;
+                    }
+                    else if (dataGridViewLabirinto.Rows[linhaCelulaSelecionada].Cells[colunaCelulaSelecionada].Style.BackColor == Color.Red)
+                    {
+                        fimInserido = false;
+                    }
                     dataGridViewLabirinto.Rows[linhaCelulaSelecionada].Cells[colunaCelulaSelecionada].Style.BackColor = Color.White;
                 }
         }
@@ -194,6 +215,8 @@ namespace ControleInteligenteAEstrela
         {
             dataGridViewLabirinto.Columns.Clear();
             AdicionarColunasLinhas();
+            inicioInserido = false;
+            fimInserido = false;
         }
 
         private void MovimentoMouse(object sender, EventArgs e)
@@ -206,6 +229,18 @@ namespace ControleInteligenteAEstrela
                     dataGridViewLabirinto.SelectedCells[i].Style.BackColor = Color.Gray;
                     dataGridViewLabirinto.SelectedCells[i].Style.BackColor = Color.Gray;
                 }
+            }
+        }
+
+        private void btnComecaoLabirinto_Click(object sender, EventArgs e)
+        {
+            if (inicioInserido && fimInserido)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("É necessário inserir o ponto de inicio e de fim para iniciar a varredura!");
             }
         }
         

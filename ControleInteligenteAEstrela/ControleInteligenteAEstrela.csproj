@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerLabirinto.cs" />
+    <Compile Include="Model\Dominio\AlgoritmoAEstrela.cs" />
     <Compile Include="Model\Dominio\CelulaLabirinto.cs" />
     <Compile Include="Model\Dominio\ParametrosFormConfig.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

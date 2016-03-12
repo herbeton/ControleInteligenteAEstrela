@@ -164,6 +164,7 @@
             this.btnComecaoLabirinto.TabIndex = 3;
             this.btnComecaoLabirinto.Text = "Iniciar";
             this.btnComecaoLabirinto.UseVisualStyleBackColor = true;
+            this.btnComecaoLabirinto.Click += new System.EventHandler(this.btnComecaoLabirinto_Click);
             // 
             // btnLimparUmaCelula
             // 
