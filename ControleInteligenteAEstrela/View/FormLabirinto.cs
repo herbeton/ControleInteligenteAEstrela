@@ -227,7 +227,7 @@ namespace ControleInteligenteAEstrela
                 for (int i = 0; i < selectedCellCount; i++)
                 {
                     dataGridViewLabirinto.SelectedCells[i].Style.BackColor = Color.Gray;
-                    dataGridViewLabirinto.SelectedCells[i].Style.BackColor = Color.Gray;
+                    //dataGridViewLabirinto.SelectedCells[i].Style.BackColor = Color.Gray;
                 }
             }
         }

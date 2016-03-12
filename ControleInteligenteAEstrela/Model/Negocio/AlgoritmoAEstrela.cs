@@ -78,12 +78,70 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
             else
             {
+                ExpandirNoAtual();
+            }
+        }
 
+        private void ExpandirNoAtual()
+        {
+            int numeroLinhaModificado = 0, numeroColunaModificado = 0;
+            bool temElementoEmUmaLista = false;
+            //if (celulaFLinhaMin.PosicaoDaLinha == 0 || celulaFLinhaMin.PosicaoDaColuna == 0)
+            //{
+            //    if (celulaFLinhaMin.PosicaoDaColuna == 0)
+            //    {
+
+            //    }
+            //    if (celulaFLinhaMin.PosicaoDaLinha == 0)
+            //    {
+
+            //    }
+            //}
+            //else
+            //{
+
+            //}
+
+            //para + 1 na coluna
+            numeroColunaModificado = celulaFLinhaMin.PosicaoDaColuna + 1;
+            if (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount)
+            {
+                //Não adiciona nas listas
+            }
+            else
+            {
+                for (int i = 0; i < listAbertos.Count; i++)
+                {
+                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listAbertos[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                for (int i = 0; i < listFechados.Count; i++)
+                {
+                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listFechados[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                if (!temElementoEmUmaLista)
+                {
+                    listAbertos.Add(celulaFLinhaMin);
+                }
+                else
+                {
+                    temElementoEmUmaLista = false;
+                }
             }
         }
 
         private void ImprimirPontosDoInicioAoFim()
         {
+            //concertar
             for (int i = 0; i < listFechados.Count; i++)
             {
                 tabuleiroDoLabirinto.SelectedCells[i].Style.BackColor = Color.Gray;
