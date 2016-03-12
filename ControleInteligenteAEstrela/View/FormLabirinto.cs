@@ -244,6 +244,8 @@ namespace ControleInteligenteAEstrela
                     celulaInicialLabirinto.PosicaoDaLinha = linhaCelulaSelecionadaAnteriorBtnInicio;
                     celulaInicialLabirinto.PosicaoDaColuna = colunaCelulaSelecionadaAnteriorBtnInicio;
                     controllerLabirinto.GetAlgoritmoAEstrela().ListAbertos.Add(celulaInicialLabirinto);
+                    controllerLabirinto.GetAlgoritmoAEstrela().TabuleiroDoLabirinto = dataGridViewLabirinto;
+                    controllerLabirinto.GetAlgoritmoAEstrela().AplicaAlgoritmoAEstrela();
                 }
                 else if (fimInserido)
                 {
