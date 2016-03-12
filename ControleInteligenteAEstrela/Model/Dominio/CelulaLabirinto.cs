@@ -10,9 +10,24 @@ namespace ControleInteligenteAEstrela.Model.Dominio
     {
         private float hLinha;
         private float fLinha;
-        private float gLinha;
-        private int posicaoX;
-        private int posicaoY;
+        private float funcaoG;
+        private int posicaoDaLinha;
+        private int posicaoDaColuna;
+        private string nomeCelula;
+
+        public CelulaLabirinto() { }
+
+        public CelulaLabirinto(float funcaoG, float hLinha){
+            this.funcaoG = funcaoG;
+            this.hLinha = hLinha;
+            this.fLinha = this.funcaoG + this.hLinha;
+        }
+
+        public string NomeCelula
+        {
+            get { return nomeCelula; }
+            set { nomeCelula = value; }
+        }
 
         public float HLinha
         {
@@ -26,22 +41,22 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             set { fLinha = value; }
         }
 
-        public float GLinha
+        public float FuncaoG
         {
-            get { return gLinha; }
-            set { gLinha = value; }
+            get { return funcaoG; }
+            set { funcaoG = value; }
         }
 
-        public int PosicaoX
+        public int PosicaoDaLinha
         {
-            get { return posicaoX; }
-            set { posicaoX = value; }
+            get { return posicaoDaLinha; }
+            set { posicaoDaLinha = value; }
         }
 
-        public int PosicaoY
+        public int PosicaoDaColuna
         {
-            get { return posicaoY; }
-            set { posicaoY = value; }
+            get { return posicaoDaColuna; }
+            set { posicaoDaColuna = value; }
         }
 
     }

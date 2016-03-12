@@ -1,4 +1,5 @@
-﻿using ControleInteligenteAEstrela.View;
+﻿using ControleInteligenteAEstrela.Model.Dominio;
+using ControleInteligenteAEstrela.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,13 @@ namespace ControleInteligenteAEstrela
 {
     public class ControllerLabirinto
     {
-        FormConfig formConfig;
-        FormLabirinto formLabirinto;
-        FormInicial formInicial;
+        private FormConfig formConfig;
+        private FormLabirinto formLabirinto;
+        private FormInicial formInicial;
+        private AlgoritmoAEstrela algoritmoAEstrela;
+
         public ControllerLabirinto(){
-            
+            algoritmoAEstrela = new AlgoritmoAEstrela();
         }
         public void SetFormConfig(FormConfig formConfig)
         {
@@ -38,6 +41,16 @@ namespace ControleInteligenteAEstrela
         public FormInicial GetFormInicial()
         {
             return formInicial;
+        }
+
+        public AlgoritmoAEstrela GetAlgoritmoAEstrela()
+        {
+            return algoritmoAEstrela;
+        }
+
+        public void SetAlgoritmoAEstrela(AlgoritmoAEstrela algoritmoAEstrela)
+        {
+            this.algoritmoAEstrela = algoritmoAEstrela;
         }
     }
 }

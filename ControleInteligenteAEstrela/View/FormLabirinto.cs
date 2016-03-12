@@ -51,7 +51,6 @@ namespace ControleInteligenteAEstrela
             inicioInserido = false;
             fimInserido = false;
             celulaFinalLabirinto = new CelulaLabirinto();
-            celulaInicialLabirinto = new CelulaLabirinto();
         }
 
         public FormLabirinto(ControllerLabirinto controllerLabirinto)
@@ -70,6 +69,7 @@ namespace ControleInteligenteAEstrela
             btnLimparUmaCelulaAtivo = false;
             inicioInserido = false;
             fimInserido = false;
+            celulaFinalLabirinto = new CelulaLabirinto();
         }
 
         private void lerArquivoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -236,12 +236,36 @@ namespace ControleInteligenteAEstrela
         {
             if (inicioInserido && fimInserido)
             {
+                if(inicioInserido){
+                    controllerLabirinto.GetAlgoritmoAEstrela().ListAbertos.Clear();
+                    controllerLabirinto.GetAlgoritmoAEstrela().ListFechados.Clear();
+                    celulaInicialLabirinto = new CelulaLabirinto(0, HLinha(linhaCelulaSelecionadaAnteriorBtnInicio, colunaCelulaSelecionadaAnteriorBtnInicio));
+                    celulaInicialLabirinto.NomeCelula = "Celula de inicio";
+                    celulaInicialLabirinto.PosicaoDaLinha = linhaCelulaSelecionadaAnteriorBtnInicio;
+                    celulaInicialLabirinto.PosicaoDaColuna = colunaCelulaSelecionadaAnteriorBtnInicio;
+                    controllerLabirinto.GetAlgoritmoAEstrela().ListAbertos.Add(celulaInicialLabirinto);
+                }
+                else if (fimInserido)
+                {
 
+                }
             }
             else
             {
                 MessageBox.Show("É necessário inserir o ponto de inicio e de fim para iniciar a varredura!");
             }
+        }
+
+        private float funcaoG()
+        {
+            return 0;
+        }
+
+        private float HLinha(int linha,int coluna)
+        {
+            int distLinha = Math.Abs(linha - linhaCelulaSelecionadaAnteriorBtnFim);
+            int distColuna = Math.Abs(coluna - colunaCelulaSelecionadaAnteriorBtnFim);
+            return (float) Math.Sqrt(Math.Pow(2, distLinha) + Math.Pow(2, distColuna));
         }
         
     }

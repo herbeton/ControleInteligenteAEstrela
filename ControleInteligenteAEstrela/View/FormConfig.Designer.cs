@@ -237,6 +237,7 @@
             // 
             // menuStripConfig
             // 
+            this.menuStripConfig.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuStripConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arquivoToolStripMenuItem1});
             this.menuStripConfig.Location = new System.Drawing.Point(0, 0);
