@@ -178,6 +178,7 @@ namespace ControleInteligenteAEstrela
                 btnMuroAtivo = false;
                 btnFimAtivo = false;
                 btnLimparUmaCelulaAtivo = false;
+                
             }
         }
 

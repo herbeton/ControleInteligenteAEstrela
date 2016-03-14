@@ -51,33 +51,36 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             else
             {
                 PegarMenorFLinhaListaAberta();
-
             }
         }
 
         private void PegarMenorFLinhaListaAberta()
         {
-            celulaFLinhaMin.FLinha = 10000000000;
-            for (int i = 0; i < listaAbertos.Count; i++)
+            while (true)
             {
-                if (listaAbertos[i].FLinha < celulaFLinhaMin.FLinha)
+                celulaFLinhaMin.FLinha = 100;
+                for (int i = 0; i < listaAbertos.Count; i++)
                 {
-                    celulaFLinhaMin = listaAbertos[i];
-                    indiceCelulaFLinhaMin = i;
+                    if (listaAbertos[i].FLinha < celulaFLinhaMin.FLinha)
+                    {
+                        celulaFLinhaMin = listaAbertos[i];
+                        indiceCelulaFLinhaMin = i;
+                    }
                 }
-            }
-            //remove o elemento com o indice da listaAbertos
-            listaAbertos.RemoveAt(indiceCelulaFLinhaMin);
-            listaFechados.Add(celulaFLinhaMin);
-            if (VerificaSeEhNoFinal())
-            {
-                MessageBox.Show("Chegou no ponto final!");
-                //fornecer a solução de percorrer ospontos da listFechada
-                ImprimirPontosDoInicioAoFimDaListaFechada();
-            }
-            else
-            {
-                ExpandirNoAtual();
+                //remove o elemento com o indice da listaAbertos
+                listaAbertos.RemoveAt(indiceCelulaFLinhaMin);
+                listaFechados.Add(celulaFLinhaMin);
+                if (VerificaSeEhNoFinal())
+                {
+                    MessageBox.Show("Chegou no ponto final!");
+                    //fornecer a solução de percorrer ospontos da listFechada
+                    ImprimirPontosDoInicioAoFimDaListaFechada();
+                    break;
+                }
+                else
+                {
+                    ExpandirNoAtual();
+                }
             }
         }
 
