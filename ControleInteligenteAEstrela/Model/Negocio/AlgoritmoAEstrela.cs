@@ -10,18 +10,17 @@ namespace ControleInteligenteAEstrela.Model.Dominio
 {
     public class AlgoritmoAEstrela
     {
-        private List<CelulaLabirinto> listAbertos;
-        private List<CelulaLabirinto> listFechados;
+        private List<CelulaLabirinto> listaAbertos;
+        private List<CelulaLabirinto> listaFechados;
         private DataGridView tabuleiroDoLabirinto;
-        private CelulaLabirinto noAbertoTemp;
         private CelulaLabirinto celulaFLinhaMin;
         private int indiceCelulaFLinhaMin;
 
         public AlgoritmoAEstrela()
         {
             celulaFLinhaMin = new CelulaLabirinto();
-            listAbertos = new List<CelulaLabirinto>();
-            listFechados = new List<CelulaLabirinto>();
+            listaAbertos = new List<CelulaLabirinto>();
+            listaFechados = new List<CelulaLabirinto>();
         }
 
         public DataGridView TabuleiroDoLabirinto
@@ -32,20 +31,20 @@ namespace ControleInteligenteAEstrela.Model.Dominio
 
         internal List<CelulaLabirinto> ListAbertos
         {
-            get { return listAbertos; }
-            set { listAbertos = value; }
+            get { return listaAbertos; }
+            set { listaAbertos = value; }
         }
 
         internal List<CelulaLabirinto> ListFechados
         {
-            get { return listFechados; }
-            set { listFechados = value; }
+            get { return listaFechados; }
+            set { listaFechados = value; }
         }
 
 
         public void AplicaAlgoritmoAEstrela()
         {
-            if (listAbertos.Count == 0)
+            if (listaAbertos.Count == 0)
             {
                 MessageBox.Show("Erro, pois não existe elementos na lista de abertos!");
             }
@@ -59,22 +58,22 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         private void PegarMenorFLinhaListaAberta()
         {
             celulaFLinhaMin.FLinha = 10000000000;
-            for (int i = 0; i < listAbertos.Count; i++)
+            for (int i = 0; i < listaAbertos.Count; i++)
             {
-                if (listAbertos[i].FLinha < celulaFLinhaMin.FLinha)
+                if (listaAbertos[i].FLinha < celulaFLinhaMin.FLinha)
                 {
-                    celulaFLinhaMin = listAbertos[i];
+                    celulaFLinhaMin = listaAbertos[i];
                     indiceCelulaFLinhaMin = i;
                 }
             }
             //remove o elemento com o indice da listaAbertos
-            listAbertos.RemoveAt(indiceCelulaFLinhaMin);
-            listFechados.Add(celulaFLinhaMin);
+            listaAbertos.RemoveAt(indiceCelulaFLinhaMin);
+            listaFechados.Add(celulaFLinhaMin);
             if (VerificaSeEhNoFinal())
             {
                 MessageBox.Show("Chegou no ponto final!");
                 //fornecer a solução de percorrer ospontos da listFechada
-                ImprimirPontosDoInicioAoFim();
+                ImprimirPontosDoInicioAoFimDaListaFechada();
             }
             else
             {
@@ -106,19 +105,19 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
             else
             {
-                for (int i = 0; i < listAbertos.Count; i++)
+                for (int i = 0; i < listaAbertos.Count; i++)
                 {
-                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listAbertos[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
+                    if (listaAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaAbertos[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
                     {
                         temElementoEmUmaLista = true;
                         break;
                     }
                 }
-                for (int i = 0; i < listFechados.Count; i++)
+                for (int i = 0; i < listaFechados.Count; i++)
                 {
-                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listFechados[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
+                    if (listaFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaFechados[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
                     {
                         temElementoEmUmaLista = true;
                         break;
@@ -126,7 +125,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
-                    listAbertos.Add(celulaFLinhaMin);
+                    listaAbertos.Add(celulaFLinhaMin);
                 }
                 else
                 {
@@ -147,19 +146,19 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
             else
             {
-                for (int i = 0; i < listAbertos.Count; i++)
+                for (int i = 0; i < listaAbertos.Count; i++)
                 {
-                    if (listAbertos[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
-                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaAbertos[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
+                        listaAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
                     }
                 }
-                for (int i = 0; i < listFechados.Count; i++)
+                for (int i = 0; i < listaFechados.Count; i++)
                 {
-                    if (listFechados[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
-                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaFechados[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
+                        listaFechados[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
@@ -167,7 +166,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
-                    listAbertos.Add(celulaFLinhaMin);
+                    listaAbertos.Add(celulaFLinhaMin);
                 }
                 else
                 {
@@ -190,19 +189,19 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
             else
             {
-                for (int i = 0; i < listAbertos.Count; i++)
+                for (int i = 0; i < listaAbertos.Count; i++)
                 {
-                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
                     }
                 }
-                for (int i = 0; i < listFechados.Count; i++)
+                for (int i = 0; i < listaFechados.Count; i++)
                 {
-                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaFechados[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
@@ -210,7 +209,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
-                    listAbertos.Add(celulaFLinhaMin);
+                    listaAbertos.Add(celulaFLinhaMin);
                 }
                 else
                 {
@@ -233,19 +232,19 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
             else
             {
-                for (int i = 0; i < listAbertos.Count; i++)
+                for (int i = 0; i < listaAbertos.Count; i++)
                 {
-                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
                     }
                 }
-                for (int i = 0; i < listFechados.Count; i++)
+                for (int i = 0; i < listaFechados.Count; i++)
                 {
-                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaFechados[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
@@ -253,7 +252,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
-                    listAbertos.Add(celulaFLinhaMin);
+                    listaAbertos.Add(celulaFLinhaMin);
                 }
                 else
                 {
@@ -274,19 +273,19 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
             else
             {
-                for (int i = 0; i < listAbertos.Count; i++)
+                for (int i = 0; i < listaAbertos.Count; i++)
                 {
-                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listAbertos[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
+                    if (listaAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaAbertos[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
                     {
                         temElementoEmUmaLista = true;
                         break;
                     }
                 }
-                for (int i = 0; i < listFechados.Count; i++)
+                for (int i = 0; i < listaFechados.Count; i++)
                 {
-                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listFechados[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
+                    if (listaFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaFechados[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
                     {
                         temElementoEmUmaLista = true;
                         break;
@@ -294,7 +293,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
-                    listAbertos.Add(celulaFLinhaMin);
+                    listaAbertos.Add(celulaFLinhaMin);
                 }
                 else
                 {
@@ -315,19 +314,19 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
             else
             {
-                for (int i = 0; i < listAbertos.Count; i++)
+                for (int i = 0; i < listaAbertos.Count; i++)
                 {
-                    if (listAbertos[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
-                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaAbertos[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
+                        listaAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
                     }
                 }
-                for (int i = 0; i < listFechados.Count; i++)
+                for (int i = 0; i < listaFechados.Count; i++)
                 {
-                    if (listFechados[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
-                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaFechados[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
+                        listaFechados[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
@@ -335,7 +334,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
-                    listAbertos.Add(celulaFLinhaMin);
+                    listaAbertos.Add(celulaFLinhaMin);
                 }
                 else
                 {
@@ -357,19 +356,19 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
             else
             {
-                for (int i = 0; i < listAbertos.Count; i++)
+                for (int i = 0; i < listaAbertos.Count; i++)
                 {
-                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
                     }
                 }
-                for (int i = 0; i < listFechados.Count; i++)
+                for (int i = 0; i < listaFechados.Count; i++)
                 {
-                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaFechados[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
@@ -377,7 +376,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
-                    listAbertos.Add(celulaFLinhaMin);
+                    listaAbertos.Add(celulaFLinhaMin);
                 }
                 else
                 {
@@ -399,19 +398,19 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
             else
             {
-                for (int i = 0; i < listAbertos.Count; i++)
+                for (int i = 0; i < listaAbertos.Count; i++)
                 {
-                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
                     }
                 }
-                for (int i = 0; i < listFechados.Count; i++)
+                for (int i = 0; i < listaFechados.Count; i++)
                 {
-                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
-                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    if (listaFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listaFechados[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
@@ -419,7 +418,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
-                    listAbertos.Add(celulaFLinhaMin);
+                    listaAbertos.Add(celulaFLinhaMin);
                 }
                 else
                 {
@@ -428,12 +427,11 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             }
         }
 
-        private void ImprimirPontosDoInicioAoFim()
+        private void ImprimirPontosDoInicioAoFimDaListaFechada()
         {
-            //concertar
-            for (int i = 0; i < listFechados.Count; i++)
+            for (int i = 0; i < listaFechados.Count; i++)
             {
-                tabuleiroDoLabirinto.SelectedCells[i].Style.BackColor = Color.Gray;
+                tabuleiroDoLabirinto.Rows[listaFechados[i].PosicaoDaLinha].Cells[listaFechados[i].PosicaoDaColuna].Style.BackColor = Color.Gray;
             }
         }
 
