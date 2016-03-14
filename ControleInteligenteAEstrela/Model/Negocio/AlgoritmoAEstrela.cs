@@ -84,24 +84,20 @@ namespace ControleInteligenteAEstrela.Model.Dominio
 
         private void ExpandirNoAtual()
         {
+            MaisUmNaColuna();
+            MaisUmNaLinha();
+            MaisUmaLinhaEColuna();
+            MenosUmaLinhaEColuna();
+            MenosUmNaColuna();
+            MenosUmNaLinha();
+            MenosUmaLinhaEMaisUmaColuna();
+            MenosUmaColunaEMaisUmaLinha();
+            
+        }
+        public void MaisUmNaColuna()
+        {
             int numeroLinhaModificado = 0, numeroColunaModificado = 0;
             bool temElementoEmUmaLista = false;
-            //if (celulaFLinhaMin.PosicaoDaLinha == 0 || celulaFLinhaMin.PosicaoDaColuna == 0)
-            //{
-            //    if (celulaFLinhaMin.PosicaoDaColuna == 0)
-            //    {
-
-            //    }
-            //    if (celulaFLinhaMin.PosicaoDaLinha == 0)
-            //    {
-
-            //    }
-            //}
-            //else
-            //{
-
-            //}
-
             //para + 1 na coluna
             numeroColunaModificado = celulaFLinhaMin.PosicaoDaColuna + 1;
             if (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount)
@@ -123,6 +119,299 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 {
                     if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
                         listFechados[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                if (!temElementoEmUmaLista)
+                {
+                    listAbertos.Add(celulaFLinhaMin);
+                }
+                else
+                {
+                    temElementoEmUmaLista = false;
+                }
+            }
+        }
+
+        public void MaisUmNaLinha()
+        {
+            int numeroLinhaModificado = 0, numeroColunaModificado = 0;
+            bool temElementoEmUmaLista = false;
+            //para + 1 na linha
+            numeroLinhaModificado = celulaFLinhaMin.PosicaoDaLinha + 1;
+            if (numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount)
+            {
+                //Não adiciona nas listas
+            }
+            else
+            {
+                for (int i = 0; i < listAbertos.Count; i++)
+                {
+                    if (listAbertos[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
+                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                for (int i = 0; i < listFechados.Count; i++)
+                {
+                    if (listFechados[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
+                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                if (!temElementoEmUmaLista)
+                {
+                    listAbertos.Add(celulaFLinhaMin);
+                }
+                else
+                {
+                    temElementoEmUmaLista = false;
+                }
+            }
+        }
+
+        public void MaisUmaLinhaEColuna()
+        {
+            int numeroLinhaModificado = 0, numeroColunaModificado = 0;
+            bool temElementoEmUmaLista = false;
+            //para + 1 na coluna
+            numeroLinhaModificado = celulaFLinhaMin.PosicaoDaLinha + 1;
+            numeroColunaModificado = celulaFLinhaMin.PosicaoDaColuna + 1;
+            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) &&
+                (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount))
+            {
+                //Não adiciona nas listas
+            }
+            else
+            {
+                for (int i = 0; i < listAbertos.Count; i++)
+                {
+                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                for (int i = 0; i < listFechados.Count; i++)
+                {
+                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                if (!temElementoEmUmaLista)
+                {
+                    listAbertos.Add(celulaFLinhaMin);
+                }
+                else
+                {
+                    temElementoEmUmaLista = false;
+                }
+            }
+        }
+
+        public void MenosUmaLinhaEColuna()
+        {
+            int numeroLinhaModificado = 0, numeroColunaModificado = 0;
+            bool temElementoEmUmaLista = false;
+            //para + 1 na coluna
+            numeroLinhaModificado = celulaFLinhaMin.PosicaoDaLinha - 1;
+            numeroColunaModificado = celulaFLinhaMin.PosicaoDaColuna - 1;
+            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) &&
+                (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount))
+            {
+                //Não adiciona nas listas
+            }
+            else
+            {
+                for (int i = 0; i < listAbertos.Count; i++)
+                {
+                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                for (int i = 0; i < listFechados.Count; i++)
+                {
+                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                if (!temElementoEmUmaLista)
+                {
+                    listAbertos.Add(celulaFLinhaMin);
+                }
+                else
+                {
+                    temElementoEmUmaLista = false;
+                }
+            }
+        }
+
+        public void MenosUmNaColuna()
+        {
+            int numeroLinhaModificado = 0, numeroColunaModificado = 0;
+            bool temElementoEmUmaLista = false;
+            //para + 1 na coluna
+            numeroColunaModificado = celulaFLinhaMin.PosicaoDaColuna - 1;
+            if (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount)
+            {
+                //Não adiciona nas listas
+            }
+            else
+            {
+                for (int i = 0; i < listAbertos.Count; i++)
+                {
+                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listAbertos[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                for (int i = 0; i < listFechados.Count; i++)
+                {
+                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listFechados[i].PosicaoDaLinha == celulaFLinhaMin.PosicaoDaLinha)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                if (!temElementoEmUmaLista)
+                {
+                    listAbertos.Add(celulaFLinhaMin);
+                }
+                else
+                {
+                    temElementoEmUmaLista = false;
+                }
+            }
+        }
+
+        public void MenosUmNaLinha()
+        {
+            int numeroLinhaModificado = 0, numeroColunaModificado = 0;
+            bool temElementoEmUmaLista = false;
+            //para + 1 na linha
+            numeroLinhaModificado = celulaFLinhaMin.PosicaoDaLinha - 1;
+            if (numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount)
+            {
+                //Não adiciona nas listas
+            }
+            else
+            {
+                for (int i = 0; i < listAbertos.Count; i++)
+                {
+                    if (listAbertos[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
+                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                for (int i = 0; i < listFechados.Count; i++)
+                {
+                    if (listFechados[i].PosicaoDaColuna == celulaFLinhaMin.PosicaoDaColuna &&
+                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                if (!temElementoEmUmaLista)
+                {
+                    listAbertos.Add(celulaFLinhaMin);
+                }
+                else
+                {
+                    temElementoEmUmaLista = false;
+                }
+            }
+        }
+        public void MenosUmaLinhaEMaisUmaColuna()
+        {
+            int numeroLinhaModificado = 0, numeroColunaModificado = 0;
+            bool temElementoEmUmaLista = false;
+            //para + 1 na coluna
+            numeroLinhaModificado = celulaFLinhaMin.PosicaoDaLinha - 1;
+            numeroColunaModificado = celulaFLinhaMin.PosicaoDaColuna + 1;
+            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) &&
+                (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount))
+            {
+                //Não adiciona nas listas
+            }
+            else
+            {
+                for (int i = 0; i < listAbertos.Count; i++)
+                {
+                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                for (int i = 0; i < listFechados.Count; i++)
+                {
+                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                if (!temElementoEmUmaLista)
+                {
+                    listAbertos.Add(celulaFLinhaMin);
+                }
+                else
+                {
+                    temElementoEmUmaLista = false;
+                }
+            }
+        }
+        public void MenosUmaColunaEMaisUmaLinha()
+        {
+            int numeroLinhaModificado = 0, numeroColunaModificado = 0;
+            bool temElementoEmUmaLista = false;
+            //para + 1 na coluna
+            numeroLinhaModificado = celulaFLinhaMin.PosicaoDaLinha + 1;
+            numeroColunaModificado = celulaFLinhaMin.PosicaoDaColuna - 1;
+            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) &&
+                (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount))
+            {
+                //Não adiciona nas listas
+            }
+            else
+            {
+                for (int i = 0; i < listAbertos.Count; i++)
+                {
+                    if (listAbertos[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listAbertos[i].PosicaoDaLinha == numeroLinhaModificado)
+                    {
+                        temElementoEmUmaLista = true;
+                        break;
+                    }
+                }
+                for (int i = 0; i < listFechados.Count; i++)
+                {
+                    if (listFechados[i].PosicaoDaColuna == numeroColunaModificado &&
+                        listFechados[i].PosicaoDaLinha == numeroLinhaModificado)
                     {
                         temElementoEmUmaLista = true;
                         break;
