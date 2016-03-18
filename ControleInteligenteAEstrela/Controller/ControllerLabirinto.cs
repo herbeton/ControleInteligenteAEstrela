@@ -16,7 +16,7 @@ namespace ControleInteligenteAEstrela
         private AlgoritmoAEstrela algoritmoAEstrela;
 
         public ControllerLabirinto(){
-            algoritmoAEstrela = new AlgoritmoAEstrela();
+            algoritmoAEstrela = new AlgoritmoAEstrela(this);
         }
         public void SetFormConfig(FormConfig formConfig)
         {

@@ -16,14 +16,24 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         private CelulaLabirinto celulaFLinhaMin;
         private CelulaLabirinto celulaAtual;
         private CelulaLabirinto celulaTemp;
+        private CelulaLabirinto celulaFinal;
         private int indiceCelulaFLinhaMin;
+        private ControllerLabirinto controller;
 
-        public AlgoritmoAEstrela()
+        public AlgoritmoAEstrela(ControllerLabirinto controller)
         {
             celulaFLinhaMin = new CelulaLabirinto();
             celulaAtual = new CelulaLabirinto();
+            celulaFinal = new CelulaLabirinto();
             listaAbertos = new List<CelulaLabirinto>();
             listaFechados = new List<CelulaLabirinto>();
+            this.controller = controller;
+        }
+
+        internal CelulaLabirinto CelulaFinal
+        {
+            get { return celulaFinal; }
+            set { celulaFinal = value; }
         }
 
         public DataGridView TabuleiroDoLabirinto
@@ -78,6 +88,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 listaAbertos.RemoveAt(0);
                 listaFechados.Add(celulaAtual);
 
+                
                 celulaFLinhaMin.FLinha = 100;
                 for (int i = 0; i < listaAbertos.Count; i++)
                 {
@@ -138,8 +149,13 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
+                    celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
+                    celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
                     celulaTemp.PosicaoDaLinha = numeroLinhaModificado;
                     celulaTemp.PosicaoDaColuna = numeroColunaModificado;
+                    celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
+                    celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
+                    celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
                     listaAbertos.Add(celulaTemp);
                 }
                 else
@@ -183,8 +199,13 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
+                    celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
+                    celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
                     celulaTemp.PosicaoDaColuna = numeroColunaModificado;
                     celulaTemp.PosicaoDaLinha = numeroLinhaModificado;
+                    celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
+                    celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
+                    celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
                     listaAbertos.Add(celulaTemp);
                 }
                 else
@@ -229,8 +250,13 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
+                    celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
+                    celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
                     celulaTemp.PosicaoDaLinha = numeroLinhaModificado;
                     celulaTemp.PosicaoDaColuna = numeroColunaModificado;
+                    celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
+                    celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
+                    celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
                     listaAbertos.Add(celulaTemp);
                 }
                 else
@@ -275,8 +301,13 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
+                    celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
+                    celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
                     celulaTemp.PosicaoDaLinha = numeroLinhaModificado;
                     celulaTemp.PosicaoDaColuna = numeroColunaModificado;
+                    celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
+                    celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
+                    celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
                     listaAbertos.Add(celulaTemp);
                 }
                 else
@@ -320,8 +351,13 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
+                    celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
+                    celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
                     celulaTemp.PosicaoDaLinha = numeroLinhaModificado;
                     celulaTemp.PosicaoDaColuna = numeroColunaModificado;
+                    celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
+                    celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
+                    celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
                     listaAbertos.Add(celulaTemp);
                 }
                 else
@@ -365,8 +401,13 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
+                    celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
+                    celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
                     celulaTemp.PosicaoDaColuna = numeroColunaModificado;
                     celulaTemp.PosicaoDaLinha = numeroLinhaModificado;
+                    celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
+                    celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
+                    celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
                     listaAbertos.Add(celulaTemp);
                 }
                 else
@@ -410,8 +451,13 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
+                    celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
+                    celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
                     celulaTemp.PosicaoDaLinha = numeroLinhaModificado;
                     celulaTemp.PosicaoDaColuna = numeroColunaModificado;
+                    celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
+                    celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
+                    celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
                     listaAbertos.Add(celulaTemp);
                 }
                 else
@@ -455,8 +501,13 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 if (!temElementoEmUmaLista)
                 {
+                    celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
+                    celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
                     celulaTemp.PosicaoDaLinha = numeroLinhaModificado;
                     celulaTemp.PosicaoDaColuna = numeroColunaModificado;
+                    celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
+                    celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
+                    celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
                     listaAbertos.Add(celulaTemp);
                 }
                 else
@@ -476,7 +527,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
 
         private bool VerificaSeEhNoFinal()
         {
-            if (celulaAtual.NomeCelula == "No final")
+            if (celulaAtual.NomeCelula == "Celula final")
             {
                 return true;
             }
@@ -484,6 +535,33 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             {
                 return false;
             }
+        }
+
+        private float funcaoG(int diferencaLinha, int diferencaColuna)
+        {
+            if (diferencaLinha == 0 && diferencaColuna == 1 || diferencaLinha == 0 && diferencaColuna == -1)
+            {
+                return (float)Convert.ToDouble(Properties.Settings.Default.CustoHorizontal);
+            }
+            else if (diferencaLinha == 1 && diferencaColuna == 0 || diferencaLinha == -1 && diferencaColuna == 0)
+            {
+                return (float)Convert.ToDouble(Properties.Settings.Default.CustoVertical);
+            }
+            else if (diferencaLinha == 1 && diferencaColuna == 1 || diferencaLinha == 1 && diferencaColuna == -1 ||
+                diferencaLinha == -1 && diferencaColuna == 1 || diferencaLinha == -1 && diferencaColuna == -1)
+            {
+                return (float)Convert.ToDouble(Properties.Settings.Default.CustoDiagonal);
+            }
+            else {
+                return 0;
+            }
+        }
+
+        private float HLinha(int linha, int coluna)
+        {
+            int distLinha = Math.Abs(linha - celulaFinal.PosicaoDaLinha);
+            int distColuna = Math.Abs(coluna - celulaFinal.PosicaoDaColuna);
+            return (float)Math.Sqrt(Math.Pow(2, distLinha) + Math.Pow(2, distColuna));
         }
 
     }

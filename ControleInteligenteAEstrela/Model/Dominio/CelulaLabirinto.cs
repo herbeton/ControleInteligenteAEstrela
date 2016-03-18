@@ -14,6 +14,20 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         private int posicaoDaLinha;
         private int posicaoDaColuna;
         private string nomeCelula;
+        private int posicaoDoPaiLinha;
+        private int posicaoDoPaiColuna;
+
+        public int PosicaoDoPaiLinha
+        {
+            get { return posicaoDoPaiLinha; }
+            set { posicaoDoPaiLinha = value; }
+        }
+
+        public int PosicaoDoPaiColuna
+        {
+            get { return posicaoDoPaiColuna; }
+            set { posicaoDoPaiColuna = value; }
+        }
 
         public CelulaLabirinto() { }
 

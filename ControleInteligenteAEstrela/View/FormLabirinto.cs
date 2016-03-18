@@ -240,10 +240,18 @@ namespace ControleInteligenteAEstrela
                 if(inicioInserido){
                     controllerLabirinto.GetAlgoritmoAEstrela().ListAbertos.Clear();
                     controllerLabirinto.GetAlgoritmoAEstrela().ListFechados.Clear();
-                    celulaInicialLabirinto = new CelulaLabirinto(0, HLinha(linhaCelulaSelecionadaAnteriorBtnInicio, colunaCelulaSelecionadaAnteriorBtnInicio));
+                    //celulaInicialLabirinto = new CelulaLabirinto(0, HLinha(linhaCelulaSelecionadaAnteriorBtnInicio, colunaCelulaSelecionadaAnteriorBtnInicio));
+                    celulaInicialLabirinto = new CelulaLabirinto();
+                    //setando os parametros referentes a celula inicial
                     celulaInicialLabirinto.NomeCelula = "Celula de inicio";
                     celulaInicialLabirinto.PosicaoDaLinha = linhaCelulaSelecionadaAnteriorBtnInicio;
                     celulaInicialLabirinto.PosicaoDaColuna = colunaCelulaSelecionadaAnteriorBtnInicio;
+                    //setando os parametros referentes a celula final
+                    celulaFinalLabirinto.NomeCelula = "Celula final";
+                    celulaFinalLabirinto.PosicaoDaLinha = linhaCelulaSelecionadaAnteriorBtnFim;
+                    celulaFinalLabirinto.PosicaoDaColuna = colunaCelulaSelecionadaAnteriorBtnFim;
+
+                    controllerLabirinto.GetAlgoritmoAEstrela().CelulaFinal = celulaFinalLabirinto;
                     controllerLabirinto.GetAlgoritmoAEstrela().ListAbertos.Add(celulaInicialLabirinto);
                     controllerLabirinto.GetAlgoritmoAEstrela().TabuleiroDoLabirinto = dataGridViewLabirinto;
                     controllerLabirinto.GetAlgoritmoAEstrela().AplicaAlgoritmoAEstrela();
@@ -259,17 +267,7 @@ namespace ControleInteligenteAEstrela
             }
         }
 
-        private float funcaoG()
-        {
-            return 0;
-        }
-
-        private float HLinha(int linha,int coluna)
-        {
-            int distLinha = Math.Abs(linha - linhaCelulaSelecionadaAnteriorBtnFim);
-            int distColuna = Math.Abs(coluna - colunaCelulaSelecionadaAnteriorBtnFim);
-            return (float) Math.Sqrt(Math.Pow(2, distLinha) + Math.Pow(2, distColuna));
-        }
+        
         
     }
 }
