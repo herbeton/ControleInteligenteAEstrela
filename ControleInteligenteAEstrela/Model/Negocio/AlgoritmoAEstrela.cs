@@ -118,6 +118,18 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             return false;
         }
 
+        private bool VericaCelulaVizinhaNaListaAberta(CelulaLabirinto celulaVizinhaAVerificar)
+        {
+            for (int i = 0; i < listaAbertos.Count; i++)
+            {
+                if (listaFechados[i] == celulaVizinhaAVerificar)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void ExpandirNoAtual()
         {
             MaisUmNaColuna();
@@ -171,7 +183,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
                     celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
                     celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
-                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp))
+                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp) && !VericaCelulaVizinhaNaListaAberta(celulaTemp))
                     {
                         listaAbertos.Add(celulaTemp);
                     }
@@ -224,7 +236,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
                     celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
                     celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
-                    listaAbertos.Add(celulaTemp);
+                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp) && !VericaCelulaVizinhaNaListaAberta(celulaTemp))
+                    {
+                        listaAbertos.Add(celulaTemp);
+                    }
                 }
                 else
                 {
@@ -275,7 +290,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
                     celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
                     celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
-                    listaAbertos.Add(celulaTemp);
+                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp) && !VericaCelulaVizinhaNaListaAberta(celulaTemp))
+                    {
+                        listaAbertos.Add(celulaTemp);
+                    }
                 }
                 else
                 {
@@ -326,7 +344,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
                     celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
                     celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
-                    listaAbertos.Add(celulaTemp);
+                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp) && !VericaCelulaVizinhaNaListaAberta(celulaTemp))
+                    {
+                        listaAbertos.Add(celulaTemp);
+                    }
                 }
                 else
                 {
@@ -376,7 +397,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
                     celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
                     celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
-                    listaAbertos.Add(celulaTemp);
+                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp) && !VericaCelulaVizinhaNaListaAberta(celulaTemp))
+                    {
+                        listaAbertos.Add(celulaTemp);
+                    }
                 }
                 else
                 {
@@ -426,7 +450,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
                     celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
                     celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
-                    listaAbertos.Add(celulaTemp);
+                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp) && !VericaCelulaVizinhaNaListaAberta(celulaTemp))
+                    {
+                        listaAbertos.Add(celulaTemp);
+                    }
                 }
                 else
                 {
@@ -476,7 +503,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
                     celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
                     celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
-                    listaAbertos.Add(celulaTemp);
+                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp) && !VericaCelulaVizinhaNaListaAberta(celulaTemp))
+                    {
+                        listaAbertos.Add(celulaTemp);
+                    }
                 }
                 else
                 {
@@ -526,7 +556,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
                     celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
                     celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
-                    listaAbertos.Add(celulaTemp);
+                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp) && !VericaCelulaVizinhaNaListaAberta(celulaTemp))
+                    {
+                        listaAbertos.Add(celulaTemp);
+                    }
                 }
                 else
                 {
