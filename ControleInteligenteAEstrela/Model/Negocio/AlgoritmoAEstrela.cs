@@ -88,16 +88,8 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 listaAbertos.RemoveAt(0);
                 listaFechados.Add(celulaAtual);
 
-                
-                celulaFLinhaMin.FLinha = 100;
-                for (int i = 0; i < listaAbertos.Count; i++)
-                {
-                    if (listaAbertos[i].FLinha < celulaFLinhaMin.FLinha)
-                    {
-                        celulaFLinhaMin = listaAbertos[i];
-                        indiceCelulaFLinhaMin = i;
-                    }
-                }
+                //ordenação da lista do menor para o maior
+                listaAbertos.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
                 
                 
             //}
