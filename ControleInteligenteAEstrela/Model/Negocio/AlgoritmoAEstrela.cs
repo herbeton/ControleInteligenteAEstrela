@@ -139,7 +139,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                         break;
                     }
                 }
-                if (!temElementoEmUmaLista)
+                if (!temElementoEmUmaLista && tabuleiroDoLabirinto.Rows[numeroLinhaModificado].Cells[numeroColunaModificado].Style.BackColor != Color.Gray)
                 {
                     celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
                     celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
@@ -189,7 +189,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                         break;
                     }
                 }
-                if (!temElementoEmUmaLista)
+                if (!temElementoEmUmaLista && tabuleiroDoLabirinto.Rows[numeroLinhaModificado].Cells[numeroColunaModificado].Style.BackColor != Color.Gray)
                 {
                     celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
                     celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
@@ -240,7 +240,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                         break;
                     }
                 }
-                if (!temElementoEmUmaLista)
+                if (!temElementoEmUmaLista && tabuleiroDoLabirinto.Rows[numeroLinhaModificado].Cells[numeroColunaModificado].Style.BackColor != Color.Gray)
                 {
                     celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
                     celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
@@ -291,7 +291,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                         break;
                     }
                 }
-                if (!temElementoEmUmaLista)
+                if (!temElementoEmUmaLista && tabuleiroDoLabirinto.Rows[numeroLinhaModificado].Cells[numeroColunaModificado].Style.BackColor != Color.Gray)
                 {
                     celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
                     celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
@@ -341,7 +341,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                         break;
                     }
                 }
-                if (!temElementoEmUmaLista)
+                if (!temElementoEmUmaLista && tabuleiroDoLabirinto.Rows[numeroLinhaModificado].Cells[numeroColunaModificado].Style.BackColor != Color.Gray)
                 {
                     celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
                     celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
@@ -391,7 +391,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                         break;
                     }
                 }
-                if (!temElementoEmUmaLista)
+                if (!temElementoEmUmaLista && tabuleiroDoLabirinto.Rows[numeroLinhaModificado].Cells[numeroColunaModificado].Style.BackColor != Color.Gray)
                 {
                     celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
                     celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
@@ -441,7 +441,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                         break;
                     }
                 }
-                if (!temElementoEmUmaLista)
+                if (!temElementoEmUmaLista && tabuleiroDoLabirinto.Rows[numeroLinhaModificado].Cells[numeroColunaModificado].Style.BackColor != Color.Gray)
                 {
                     celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
                     celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
@@ -491,7 +491,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                         break;
                     }
                 }
-                if (!temElementoEmUmaLista)
+                if (!temElementoEmUmaLista && tabuleiroDoLabirinto.Rows[numeroLinhaModificado].Cells[numeroColunaModificado].Style.BackColor != Color.Gray)
                 {
                     celulaTemp.PosicaoDoPaiColuna = celulaAtual.PosicaoDaColuna;
                     celulaTemp.PosicaoDoPaiLinha = celulaAtual.PosicaoDaLinha;
