@@ -86,13 +86,36 @@ namespace ControleInteligenteAEstrela.Model.Dominio
 
                 //remove o elemento com o indice da listaAbertos
                 listaAbertos.RemoveAt(0);
-                listaFechados.Add(celulaAtual);
+                //adicionando na lista de fechados ou não
+                for (int i = 0; i < listaFechados.Count; i++)
+                {
+                    if (listaFechados[i] == celulaAtual)
+                    {
+                        break;
+                    }
+                    else if (listaFechados.Count - 1 == i)
+                    {
+                        listaFechados.Add(celulaAtual);
+                    }
+                }
 
-                //ordenação da lista do menor para o maior
+                //ordenação da lista do menor para o maior Flinha
                 listaAbertos.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
                 
                 
             //}
+        }
+
+        private bool VericaCelulaVizinhaNaListaFechada(CelulaLabirinto celulaVizinhaAVerificar)
+        {
+            for (int i = 0; i < listaFechados.Count; i++)
+            {
+                if (listaFechados[i] == celulaVizinhaAVerificar)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void ExpandirNoAtual()
@@ -148,7 +171,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     celulaTemp.HLinha = HLinha(numeroLinhaModificado, numeroColunaModificado);
                     celulaTemp.FuncaoG = funcaoG(numeroLinhaModificado - celulaAtual.PosicaoDaLinha, numeroColunaModificado - celulaAtual.PosicaoDaColuna);
                     celulaTemp.FLinha = celulaTemp.HLinha + celulaTemp.FuncaoG;
-                    listaAbertos.Add(celulaTemp);
+                    if (!VericaCelulaVizinhaNaListaFechada(celulaTemp))
+                    {
+                        listaAbertos.Add(celulaTemp);
+                    }
                 }
                 else
                 {
