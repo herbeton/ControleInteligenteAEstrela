@@ -29,13 +29,18 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             set { posicaoDoPaiColuna = value; }
         }
 
-        public CelulaLabirinto() { }
-
-        public CelulaLabirinto(float funcaoG, float hLinha){
-            this.funcaoG = funcaoG;
-            this.hLinha = hLinha;
-            this.fLinha = this.funcaoG + this.hLinha;
+        public CelulaLabirinto() {
+            funcaoG = 0;
+            hLinha = 0;
+            fLinha = 0;
+            nomeCelula = "";
         }
+
+        //public CelulaLabirinto(float funcaoG, float hLinha){
+        //    this.funcaoG = funcaoG;
+        //    this.hLinha = hLinha;
+        //    this.fLinha = this.funcaoG + this.hLinha;
+        //}
 
         public string NomeCelula
         {

@@ -541,16 +541,16 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         {
             if (diferencaLinha == 0 && diferencaColuna == 1 || diferencaLinha == 0 && diferencaColuna == -1)
             {
-                return (float)Convert.ToDouble(Properties.Settings.Default.CustoHorizontal);
+                return (float)Convert.ToDouble(Properties.Settings.Default.CustoHorizontal) + celulaAtual.FuncaoG;
             }
             else if (diferencaLinha == 1 && diferencaColuna == 0 || diferencaLinha == -1 && diferencaColuna == 0)
             {
-                return (float)Convert.ToDouble(Properties.Settings.Default.CustoVertical);
+                return (float)Convert.ToDouble(Properties.Settings.Default.CustoVertical) + celulaAtual.FuncaoG;
             }
             else if (diferencaLinha == 1 && diferencaColuna == 1 || diferencaLinha == 1 && diferencaColuna == -1 ||
                 diferencaLinha == -1 && diferencaColuna == 1 || diferencaLinha == -1 && diferencaColuna == -1)
             {
-                return (float)Convert.ToDouble(Properties.Settings.Default.CustoDiagonal);
+                return (float)Convert.ToDouble(Properties.Settings.Default.CustoDiagonal) + celulaAtual.FuncaoG;
             }
             else {
                 return 0;
