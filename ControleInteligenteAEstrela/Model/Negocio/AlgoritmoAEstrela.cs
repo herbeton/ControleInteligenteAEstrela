@@ -122,9 +122,13 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         {
             for (int i = 0; i < listaAbertos.Count; i++)
             {
-                if (listaFechados[i] == celulaVizinhaAVerificar)
+                if (listaAbertos[i] == celulaVizinhaAVerificar)
                 {
-                    return true;
+                    if (listaAbertos[i].FLinha > celulaVizinhaAVerificar.FLinha)
+                    {
+                        listaAbertos.RemoveAt(i);
+                        return true;
+                    }
                 }
             }
             return false;
