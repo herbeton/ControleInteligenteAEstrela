@@ -32,8 +32,9 @@
             this.dataGridViewLabirinto = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lerArquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salvarArquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.outrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -78,24 +79,30 @@
             // arquivoToolStripMenuItem
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lerArquivoToolStripMenuItem,
-            this.salvarArquivoToolStripMenuItem});
+            this.salvarArquivoToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.sairToolStripMenuItem});
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.arquivoToolStripMenuItem.Text = "Arquivo";
             // 
-            // lerArquivoToolStripMenuItem
-            // 
-            this.lerArquivoToolStripMenuItem.Name = "lerArquivoToolStripMenuItem";
-            this.lerArquivoToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.lerArquivoToolStripMenuItem.Text = "Abrir";
-            this.lerArquivoToolStripMenuItem.Click += new System.EventHandler(this.lerArquivoToolStripMenuItem_Click);
-            // 
             // salvarArquivoToolStripMenuItem
             // 
             this.salvarArquivoToolStripMenuItem.Name = "salvarArquivoToolStripMenuItem";
-            this.salvarArquivoToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.salvarArquivoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salvarArquivoToolStripMenuItem.Text = "Salvar";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -106,8 +113,8 @@
             // outrosToolStripMenuItem
             // 
             this.outrosToolStripMenuItem.Name = "outrosToolStripMenuItem";
-            this.outrosToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.outrosToolStripMenuItem.Text = "Outros";
+            this.outrosToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.outrosToolStripMenuItem.Text = "Ajuda";
             // 
             // flowLayoutPanel
             // 
@@ -228,7 +235,6 @@
         private System.Windows.Forms.DataGridView dataGridViewLabirinto;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lerArquivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salvarArquivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -240,6 +246,8 @@
         private System.Windows.Forms.Button btnComecaoLabirinto;
         private System.Windows.Forms.Button btnLimparUmaCelula;
         private System.Windows.Forms.Button btnLimparodoLabirinto;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
     }
 }
 

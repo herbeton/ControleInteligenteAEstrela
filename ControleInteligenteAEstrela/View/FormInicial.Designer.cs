@@ -120,7 +120,8 @@
             // 
             this.carregarToolStripMenuItem.Name = "carregarToolStripMenuItem";
             this.carregarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.carregarToolStripMenuItem.Text = "Carregar";
+            this.carregarToolStripMenuItem.Text = "Abrir";
+            this.carregarToolStripMenuItem.Click += new System.EventHandler(this.carregarToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -132,6 +133,7 @@
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // FormInicial
             // 

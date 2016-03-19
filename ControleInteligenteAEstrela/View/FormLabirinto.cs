@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ namespace ControleInteligenteAEstrela
         private bool fimInserido;
         private CelulaLabirinto celulaInicialLabirinto;
         private CelulaLabirinto celulaFinalLabirinto;
+        int numeroLinha;
         public FormLabirinto()
         {
             InitializeComponent();
@@ -51,6 +53,8 @@ namespace ControleInteligenteAEstrela
             inicioInserido = false;
             fimInserido = false;
             celulaFinalLabirinto = new CelulaLabirinto();
+            numeroLinha = 0;
+            AdicionaElementosDoArquivoTxt();
         }
 
         public FormLabirinto(ControllerLabirinto controllerLabirinto)
@@ -70,11 +74,64 @@ namespace ControleInteligenteAEstrela
             inicioInserido = false;
             fimInserido = false;
             celulaFinalLabirinto = new CelulaLabirinto();
+            numeroLinha = 0;
+            AdicionaElementosDoArquivoTxt();
         }
 
-        private void lerArquivoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AdicionaElementosDoArquivoTxt()
         {
-            Application.Exit();
+            //varia o número de linhas
+            foreach (string line in controllerLabirinto.GetlinhasDoArquivoTxt())
+            {
+                if (numeroLinha != 0)
+                {
+                    //varia o número de colunas
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        try
+                        {
+                            //adição de celula admissível no labirinto
+                            //if (line[i].ToString() == "0")
+                            //{
+                            //    dataGridViewLabirinto.Rows[numeroLinha - 1].Cells[i].Style.BackColor = Color.White;
+                            //    btnMuroAtivo = false;
+                            //    btnInicioAtivo = false;
+                            //    btnFimAtivo = false;
+                            //    btnLimparUmaCelulaAtivo = false;
+                            //}
+                            //adição de mura no labirinto
+                            if (line[i].ToString() == "1")
+                            {
+                                dataGridViewLabirinto.Rows[numeroLinha - 1].Cells[i].Style.BackColor = Color.Gray;
+                                btnMuroAtivo = true;
+                                btnInicioAtivo = false;
+                                btnFimAtivo = false;
+                                btnLimparUmaCelulaAtivo = false;
+                            }
+                            //adição da posição inicial no labirinto
+                            else if (line[i].ToString() == "2")
+                            {
+                                dataGridViewLabirinto.Rows[numeroLinha - 1].Cells[i].Style.BackColor = Color.Green;
+                                btnMuroAtivo = false;
+                                btnInicioAtivo = true;
+                                btnFimAtivo = false;
+                                btnLimparUmaCelulaAtivo = false;
+                            }
+                            //adição da posição final no labirinto
+                            else if (line[i].ToString() == "3")
+                            {
+                                dataGridViewLabirinto.Rows[numeroLinha - 1].Cells[i].Style.BackColor = Color.Red;
+                                btnMuroAtivo = false;
+                                btnInicioAtivo = false;
+                                btnFimAtivo = true;
+                                btnLimparUmaCelulaAtivo = false;
+                            }
+                        }
+                        catch (ArgumentOutOfRangeException) { }
+                    }
+                }
+                numeroLinha++;
+            }
         }
 
         private void AdicionarColunasLinhas()
@@ -276,6 +333,11 @@ namespace ControleInteligenteAEstrela
             btnFimAtivo = false;
             btnMuroAtivo = false;
             btnInicioAtivo = false;
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
         
     }

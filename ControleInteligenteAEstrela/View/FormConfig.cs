@@ -59,37 +59,43 @@ namespace ControleInteligenteAEstrela
 
         private void LerArquivoTxt(String diretorio)
         {
-            StreamReader texto = new StreamReader(diretorio);
-            string primeiraLinhaArquivo;
-            List<string> bufferTexto = new List<string>();
-            string buffer = "";
-            int tamanhoLinhaInicial = 0;
-            int i = 0;
-            if ((primeiraLinhaArquivo = texto.ReadLine()) != null)
+            try
             {
-                tamanhoLinhaInicial = primeiraLinhaArquivo.Length;
-                while(tamanhoLinhaInicial > i){
-                    if (primeiraLinhaArquivo[i].ToString() != " " && tamanhoLinhaInicial != i + 1)
+                StreamReader texto = new StreamReader(diretorio);
+                string primeiraLinhaArquivo;
+                List<string> bufferTexto = new List<string>();
+                string buffer = "";
+                int tamanhoLinhaInicial = 0;
+                int i = 0;
+                if ((primeiraLinhaArquivo = texto.ReadLine()) != null)
+                {
+                    tamanhoLinhaInicial = primeiraLinhaArquivo.Length;
+                    while (tamanhoLinhaInicial > i)
                     {
-                        buffer = buffer + primeiraLinhaArquivo[i];
-                    }
-                    else{
-                        if (tamanhoLinhaInicial == i + 1)
+                        if (primeiraLinhaArquivo[i].ToString() != " " && tamanhoLinhaInicial != i + 1)
                         {
                             buffer = buffer + primeiraLinhaArquivo[i];
-                            bufferTexto.Add(buffer);
-                            buffer = "";
                         }
                         else
                         {
-                            bufferTexto.Add(buffer);
-                            buffer = "";
+                            if (tamanhoLinhaInicial == i + 1)
+                            {
+                                buffer = buffer + primeiraLinhaArquivo[i];
+                                bufferTexto.Add(buffer);
+                                buffer = "";
+                            }
+                            else
+                            {
+                                bufferTexto.Add(buffer);
+                                buffer = "";
+                            }
                         }
+                        i++;
                     }
-                    i++;
                 }
+                SetTextBoxs(bufferTexto);
             }
-            SetTextBoxs(bufferTexto);
+            catch (ArgumentException) { }
         }
 
         private void SetTextBoxs(List<string> bufferTexto)

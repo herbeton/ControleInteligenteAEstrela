@@ -14,6 +14,7 @@ namespace ControleInteligenteAEstrela
         private FormLabirinto formLabirinto;
         private FormInicial formInicial;
         private AlgoritmoAEstrela algoritmoAEstrela;
+        private string[] linhasDoArquivoTxt;
 
         public ControllerLabirinto(){
             algoritmoAEstrela = new AlgoritmoAEstrela(this);
@@ -26,6 +27,17 @@ namespace ControleInteligenteAEstrela
         {
             return formConfig;
         }
+
+        public void SetlinhasDoArquivoTxt(string[] linhas)
+        {
+            this.linhasDoArquivoTxt = linhas;
+        }
+
+        public string[] GetlinhasDoArquivoTxt()
+        {
+            return this.linhasDoArquivoTxt;
+        }
+
         public void SetFormConfig(FormLabirinto formLabirinto)
         {
             this.formLabirinto = formLabirinto;
