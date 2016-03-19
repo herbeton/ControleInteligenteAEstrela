@@ -12,6 +12,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
     {
         private List<CelulaLabirinto> listaAbertos;
         private List<CelulaLabirinto> listaFechados;
+        private List<CelulaLabirinto> listaDoCaminhoPercorrido;
         private DataGridView tabuleiroDoLabirinto;
         private CelulaLabirinto celulaFLinhaMin;
         private CelulaLabirinto celulaAtual;
@@ -27,6 +28,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             celulaFinal = new CelulaLabirinto();
             listaAbertos = new List<CelulaLabirinto>();
             listaFechados = new List<CelulaLabirinto>();
+            listaDoCaminhoPercorrido = new List<CelulaLabirinto>();
             this.controller = controller;
         }
 
@@ -69,15 +71,16 @@ namespace ControleInteligenteAEstrela.Model.Dominio
 
         private void PegarMenorFLinhaListaAberta()
         {
-            //while (true)
-            //{
+            while (true)
+            {
                 celulaAtual = listaAbertos[0];
                 if (VerificaSeEhNoFinal())
                 {
                     MessageBox.Show("Chegou no ponto final!");
                     //fornecer a solução de percorrer ospontos da listFechada
+                    //listaFechados.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
                     ImprimirPontosDoInicioAoFimDaListaFechada();
-                    //break;
+                    break;
                 }
                 else
                 {
@@ -85,25 +88,34 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
 
                 //remove o elemento com o indice da listaAbertos
-                listaAbertos.RemoveAt(0);
-                //adicionando na lista de fechados ou não
-                for (int i = 0; i < listaFechados.Count; i++)
+                if (listaAbertos.Count != 0)
                 {
-                    if (listaFechados[i] == celulaAtual)
+                    listaAbertos.RemoveAt(0);
+                }
+                //adicionando na lista de fechados ou não
+                if (listaFechados.Count == 0)
+                {
+                    listaFechados.Add(celulaAtual);
+                }
+                else
+                {
+                    for (int i = 0; i < listaFechados.Count; i++)
                     {
-                        break;
-                    }
-                    else if (listaFechados.Count - 1 == i)
-                    {
-                        listaFechados.Add(celulaAtual);
+                        if (listaFechados[i] == celulaAtual)
+                        {
+                            break;
+                        }
+                        else if (listaFechados.Count - 1 == i)
+                        {
+                            listaFechados.Add(celulaAtual);
+                        }
                     }
                 }
 
                 //ordenação da lista do menor para o maior Flinha
                 listaAbertos.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
-                
-                
-            //}
+            }
+            MessageBox.Show("Acabouu!");
         }
 
         private bool VericaCelulaVizinhaNaListaFechada(CelulaLabirinto celulaVizinhaAVerificar)
@@ -124,7 +136,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             {
                 if (listaAbertos[i] == celulaVizinhaAVerificar)
                 {
-                    if (listaAbertos[i].FLinha > celulaVizinhaAVerificar.FLinha)
+                    if (listaAbertos[i].FuncaoG > celulaVizinhaAVerificar.FuncaoG)
                     {
                         listaAbertos.RemoveAt(i);
                         return true;
@@ -260,7 +272,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             //para + 1 na coluna
             numeroLinhaModificado = celulaAtual.PosicaoDaLinha + 1;
             numeroColunaModificado = celulaAtual.PosicaoDaColuna + 1;
-            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) &&
+            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) ||
                 (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount))
             {
                 //Não adiciona nas listas
@@ -314,7 +326,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             //para + 1 na coluna
             numeroLinhaModificado = celulaAtual.PosicaoDaLinha - 1;
             numeroColunaModificado = celulaAtual.PosicaoDaColuna - 1;
-            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) &&
+            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) ||
                 (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount))
             {
                 //Não adiciona nas listas
@@ -473,7 +485,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             //para + 1 na coluna
             numeroLinhaModificado = celulaAtual.PosicaoDaLinha - 1;
             numeroColunaModificado = celulaAtual.PosicaoDaColuna + 1;
-            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) &&
+            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) ||
                 (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount))
             {
                 //Não adiciona nas listas
@@ -526,7 +538,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             //para + 1 na coluna
             numeroLinhaModificado = celulaAtual.PosicaoDaLinha + 1;
             numeroColunaModificado = celulaAtual.PosicaoDaColuna - 1;
-            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) &&
+            if ((numeroLinhaModificado < 0 || numeroLinhaModificado >= tabuleiroDoLabirinto.RowCount) ||
                 (numeroColunaModificado < 0 || numeroColunaModificado >= tabuleiroDoLabirinto.ColumnCount))
             {
                 //Não adiciona nas listas
@@ -582,7 +594,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
 
         private bool VerificaSeEhNoFinal()
         {
-            if (celulaAtual.NomeCelula == "Celula final")
+            if (celulaAtual.PosicaoDaColuna == celulaFinal.PosicaoDaColuna && celulaAtual.PosicaoDaLinha == celulaFinal.PosicaoDaLinha)
             {
                 return true;
             }
