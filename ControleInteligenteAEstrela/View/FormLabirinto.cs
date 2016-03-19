@@ -75,7 +75,7 @@ namespace ControleInteligenteAEstrela
             fimInserido = false;
             celulaFinalLabirinto = new CelulaLabirinto();
             numeroLinha = 0;
-            AdicionaElementosDoArquivoTxt();
+            //AdicionaElementosDoArquivoTxt();
         }
 
         private void AdicionaElementosDoArquivoTxt()
@@ -83,14 +83,14 @@ namespace ControleInteligenteAEstrela
             //varia o número de linhas
             foreach (string line in controllerLabirinto.GetlinhasDoArquivoTxt())
             {
+                int recebeLinhaMenosUm;
                 if (numeroLinha != 0)
                 {
                     //varia o número de colunas
                     for (int i = 0; i < line.Length; i++)
                     {
-                        try
-                        {
-                            //adição de celula admissível no labirinto
+                        recebeLinhaMenosUm = numeroLinha - 1;
+                         //adição de celula admissível no labirinto
                             //if (line[i].ToString() == "0")
                             //{
                             //    dataGridViewLabirinto.Rows[numeroLinha - 1].Cells[i].Style.BackColor = Color.White;
@@ -102,8 +102,8 @@ namespace ControleInteligenteAEstrela
                             //adição de mura no labirinto
                             if (line[i].ToString() == "1")
                             {
-                                dataGridViewLabirinto.Rows[numeroLinha - 1].Cells[i].Style.BackColor = Color.Gray;
-                                btnMuroAtivo = true;
+                                dataGridViewLabirinto.Rows[recebeLinhaMenosUm].Cells[i].Style.BackColor = Color.Gray;
+                                btnMuroAtivo = false;
                                 btnInicioAtivo = false;
                                 btnFimAtivo = false;
                                 btnLimparUmaCelulaAtivo = false;
@@ -111,24 +111,24 @@ namespace ControleInteligenteAEstrela
                             //adição da posição inicial no labirinto
                             else if (line[i].ToString() == "2")
                             {
-                                dataGridViewLabirinto.Rows[numeroLinha - 1].Cells[i].Style.BackColor = Color.Green;
+                                dataGridViewLabirinto.Rows[recebeLinhaMenosUm].Cells[i].Style.BackColor = Color.Green;
                                 btnMuroAtivo = false;
-                                btnInicioAtivo = true;
+                                btnInicioAtivo = false;
                                 btnFimAtivo = false;
                                 btnLimparUmaCelulaAtivo = false;
                             }
                             //adição da posição final no labirinto
                             else if (line[i].ToString() == "3")
                             {
-                                dataGridViewLabirinto.Rows[numeroLinha - 1].Cells[i].Style.BackColor = Color.Red;
+                                dataGridViewLabirinto.Rows[recebeLinhaMenosUm].Cells[i].Style.BackColor = Color.Red;
                                 btnMuroAtivo = false;
                                 btnInicioAtivo = false;
-                                btnFimAtivo = true;
+                                btnFimAtivo = false;
                                 btnLimparUmaCelulaAtivo = false;
                             }
                         }
-                        catch (ArgumentOutOfRangeException) { }
-                    }
+                        
+                    
                 }
                 numeroLinha++;
             }

@@ -123,22 +123,28 @@ namespace ControleInteligenteAEstrela.Model.Dominio
 
         private void AdicionarNaListaFechadaEVerificar()
         {
-            
-            for (int i = 0; i < listaFechados.Count; i++)
+            try
             {
-                bool adicionouNaListaFechada = false;
-                if (listaFechados[i].PosicaoDoPaiColuna == celulaAtual.PosicaoDoPaiColuna && listaFechados[i].PosicaoDoPaiLinha == celulaAtual.PosicaoDoPaiLinha)
+                for (int i = 0; i < listaFechados.Count; i++)
                 {
-                    if (listaFechados[i].FLinha > celulaAtual.FLinha)
+                    bool adicionouNaListaFechada = false;
+                    if (listaFechados[i].PosicaoDoPaiColuna == celulaAtual.PosicaoDoPaiColuna && listaFechados[i].PosicaoDoPaiLinha == celulaAtual.PosicaoDoPaiLinha)
                     {
-                        listaFechados[i] = celulaAtual;
-                        adicionouNaListaFechada = true;
+                        if (listaFechados[i].FLinha > celulaAtual.FLinha)
+                        {
+                            listaFechados[i] = celulaAtual;
+                            adicionouNaListaFechada = true;
+                        }
+                    }
+                    else if (!adicionouNaListaFechada)
+                    {
+                        listaFechados.Add(celulaAtual);
                     }
                 }
-                else if (!adicionouNaListaFechada)
-                {
-                    listaFechados.Add(celulaAtual);
-                }
+            }
+            catch (OutOfMemoryException)
+            {
+                MessageBox.Show("Não encontrei o caminho!");
             }
         }
 
