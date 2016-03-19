@@ -13,6 +13,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         private List<CelulaLabirinto> listaAbertos;
         private List<CelulaLabirinto> listaFechados;
         private List<CelulaLabirinto> listaDoCaminhoPercorrido;
+        private List<CelulaLabirinto> listaTemp;
         private DataGridView tabuleiroDoLabirinto;
         private CelulaLabirinto celulaFLinhaMin;
         private CelulaLabirinto celulaAtual;
@@ -30,6 +31,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             listaAbertos = new List<CelulaLabirinto>();
             listaFechados = new List<CelulaLabirinto>();
             listaDoCaminhoPercorrido = new List<CelulaLabirinto>();
+            listaTemp = new List<CelulaLabirinto>();
             this.controller = controller;
         }
 
@@ -110,23 +112,34 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 }
                 else
                 {
-                    for (int i = 0; i < listaFechados.Count; i++)
-                    {
-                        if (listaFechados[i] == celulaAtual)
-                        {
-                            break;
-                        }
-                        else if (listaFechados.Count - 1 == i)
-                        {
-                            listaFechados.Add(celulaAtual);
-                        }
-                    }
+                    AdicionarNaListaFechadaEVerificar();
                 }
 
                 //ordenação da lista do menor para o maior Flinha
                 listaAbertos.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
             }
             MessageBox.Show("Acabouu!");
+        }
+
+        private void AdicionarNaListaFechadaEVerificar()
+        {
+            
+            for (int i = 0; i < listaFechados.Count; i++)
+            {
+                bool adicionouNaListaFechada = false;
+                if (listaFechados[i].PosicaoDoPaiColuna == celulaAtual.PosicaoDoPaiColuna && listaFechados[i].PosicaoDoPaiLinha == celulaAtual.PosicaoDoPaiLinha)
+                {
+                    if (listaFechados[i].FLinha > celulaAtual.FLinha)
+                    {
+                        listaFechados[i] = celulaAtual;
+                        adicionouNaListaFechada = true;
+                    }
+                }
+                else if (!adicionouNaListaFechada)
+                {
+                    listaFechados.Add(celulaAtual);
+                }
+            }
         }
 
         private bool VericaCelulaVizinhaNaListaFechada(CelulaLabirinto celulaVizinhaAVerificar)
@@ -599,7 +612,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         {
             for (int i = 0; i < listaFechados.Count; i++)
             {
-                tabuleiroDoLabirinto.Rows[listaFechados[i].PosicaoDoPaiLinha].Cells[listaFechados[i].PosicaoDoPaiColuna].Style.BackColor = Color.Gray;
+                tabuleiroDoLabirinto.Rows[listaFechados[i].PosicaoDoPaiLinha].Cells[listaFechados[i].PosicaoDoPaiColuna].Style.BackColor = Color.Gold;
             }
             tabuleiroDoLabirinto.Rows[celulaInicial.PosicaoDaLinha].Cells[celulaInicial.PosicaoDaColuna].Style.BackColor = Color.Green;
             tabuleiroDoLabirinto.Rows[celulaFinal.PosicaoDaLinha].Cells[celulaFinal.PosicaoDaColuna].Style.BackColor = Color.Red;
