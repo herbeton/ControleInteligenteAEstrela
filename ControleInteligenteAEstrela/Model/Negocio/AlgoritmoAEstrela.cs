@@ -83,6 +83,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 celulaAtual = listaAbertos[0];
                 if (VerificaSeEhNoFinal())
                 {
+                    listaFechados.Add(celulaAtual);
                     MessageBox.Show("Chegou no ponto final!");
                     //fornecer a solução de percorrer ospontos da listFechada
                     listaFechados.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
@@ -102,7 +103,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 //adicionando na lista de fechados ou não
                 if (listaFechados.Count == 0)
                 {
-                    listaFechados.Add(celulaAtual);
+                    if (celulaAtual.NomeCelula != "Celula de inicio")
+                    {
+                        listaFechados.Add(celulaAtual);
+                    }
                 }
                 else
                 {
