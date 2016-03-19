@@ -18,7 +18,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         private CelulaLabirinto celulaAtual;
         private CelulaLabirinto celulaTemp;
         private CelulaLabirinto celulaFinal;
-        private int indiceCelulaFLinhaMin;
+        private CelulaLabirinto celulaInicial;
         private ControllerLabirinto controller;
 
         public AlgoritmoAEstrela(ControllerLabirinto controller)
@@ -26,10 +26,17 @@ namespace ControleInteligenteAEstrela.Model.Dominio
             celulaFLinhaMin = new CelulaLabirinto();
             celulaAtual = new CelulaLabirinto();
             celulaFinal = new CelulaLabirinto();
+            celulaInicial = new CelulaLabirinto();
             listaAbertos = new List<CelulaLabirinto>();
             listaFechados = new List<CelulaLabirinto>();
             listaDoCaminhoPercorrido = new List<CelulaLabirinto>();
             this.controller = controller;
+        }
+
+        internal CelulaLabirinto CelulaInicial
+        {
+            get { return celulaInicial; }
+            set { celulaInicial = value; }
         }
 
         internal CelulaLabirinto CelulaFinal
@@ -78,7 +85,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 {
                     MessageBox.Show("Chegou no ponto final!");
                     //fornecer a solução de percorrer ospontos da listFechada
-                    //listaFechados.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
+                    listaFechados.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
                     ImprimirPontosDoInicioAoFimDaListaFechada();
                     break;
                 }
@@ -588,8 +595,10 @@ namespace ControleInteligenteAEstrela.Model.Dominio
         {
             for (int i = 0; i < listaFechados.Count; i++)
             {
-                tabuleiroDoLabirinto.Rows[listaFechados[i].PosicaoDaLinha].Cells[listaFechados[i].PosicaoDaColuna].Style.BackColor = Color.Gray;
+                tabuleiroDoLabirinto.Rows[listaFechados[i].PosicaoDoPaiLinha].Cells[listaFechados[i].PosicaoDoPaiColuna].Style.BackColor = Color.Gray;
             }
+            tabuleiroDoLabirinto.Rows[celulaInicial.PosicaoDaLinha].Cells[celulaInicial.PosicaoDaColuna].Style.BackColor = Color.Green;
+            tabuleiroDoLabirinto.Rows[celulaFinal.PosicaoDaLinha].Cells[celulaFinal.PosicaoDaColuna].Style.BackColor = Color.Red;
         }
 
         private bool VerificaSeEhNoFinal()

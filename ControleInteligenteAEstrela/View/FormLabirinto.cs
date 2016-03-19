@@ -251,10 +251,13 @@ namespace ControleInteligenteAEstrela
                     celulaFinalLabirinto.PosicaoDaLinha = linhaCelulaSelecionadaAnteriorBtnFim;
                     celulaFinalLabirinto.PosicaoDaColuna = colunaCelulaSelecionadaAnteriorBtnFim;
 
+                    controllerLabirinto.GetAlgoritmoAEstrela().CelulaInicial = celulaInicialLabirinto;
                     controllerLabirinto.GetAlgoritmoAEstrela().CelulaFinal = celulaFinalLabirinto;
                     controllerLabirinto.GetAlgoritmoAEstrela().ListAbertos.Add(celulaInicialLabirinto);
                     controllerLabirinto.GetAlgoritmoAEstrela().TabuleiroDoLabirinto = dataGridViewLabirinto;
                     controllerLabirinto.GetAlgoritmoAEstrela().AplicaAlgoritmoAEstrela();
+
+                    SetandoBoleanasParaFalse();
                 }
                 else if (fimInserido)
                 {
@@ -267,7 +270,13 @@ namespace ControleInteligenteAEstrela
             }
         }
 
-        
+        private void SetandoBoleanasParaFalse()
+        {
+            btnLimparUmaCelulaAtivo = false;
+            btnFimAtivo = false;
+            btnMuroAtivo = false;
+            btnInicioAtivo = false;
+        }
         
     }
 }
