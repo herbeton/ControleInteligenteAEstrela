@@ -120,7 +120,7 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                 //ordenação da lista do menor para o maior Flinha
                 listaAbertos.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
             }
-            MessageBox.Show("Acabouu!");
+            MessageBox.Show("Acabou!");
         }
 
         private void AdicionarNaListaFechadaEVerificar()
