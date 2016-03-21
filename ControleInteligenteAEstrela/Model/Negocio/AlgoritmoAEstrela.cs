@@ -89,7 +89,9 @@ namespace ControleInteligenteAEstrela.Model.Dominio
                     MessageBox.Show("Chegou no ponto final!");
                     //fornecer a solução de percorrer ospontos da listFechada
                     listaFechados.Sort((x, y) => x.FLinha.CompareTo(y.FLinha));
-                    ImprimirPontosDoInicioAoFimDaListaFechada();
+                    Task task = new Task(() => 
+                    ImprimirPontosDoInicioAoFimDaListaFechada());
+                    task.Start();
                     break;
                 }
                 else

@@ -146,7 +146,7 @@ namespace ControleInteligenteAEstrela
                     DataGridViewCell cell = new DataGridViewTextBoxCell();
                     cell.Style.BackColor = Color.White;
                     column.CellTemplate = cell;
-                    column.Width = 30;
+                    column.Width = 55;
                     column.Resizable = DataGridViewTriState.False;
                     dataGridViewLabirinto.Columns.Add(column);
                 }
@@ -154,7 +154,7 @@ namespace ControleInteligenteAEstrela
                 for (int j = 0; j < numeroDeLinhas - 1; j++)
                 {
                     DataGridViewRow row = new DataGridViewRow();
-                    row.Height = 30;
+                    row.Height = 40;
                     row.Resizable = DataGridViewTriState.False;
                     dataGridViewLabirinto.Rows.Add(row);
                 }
@@ -312,8 +312,9 @@ namespace ControleInteligenteAEstrela
                     controllerLabirinto.GetAlgoritmoAEstrela().CelulaFinal = celulaFinalLabirinto;
                     controllerLabirinto.GetAlgoritmoAEstrela().ListAbertos.Add(celulaInicialLabirinto);
                     controllerLabirinto.GetAlgoritmoAEstrela().TabuleiroDoLabirinto = dataGridViewLabirinto;
-                    controllerLabirinto.GetAlgoritmoAEstrela().AplicaAlgoritmoAEstrela();
-
+                    Task task = new Task(() =>
+                    controllerLabirinto.GetAlgoritmoAEstrela().AplicaAlgoritmoAEstrela());
+                    task.Start();
                     SetandoBoleanasParaFalse();
                 }
                 else if (fimInserido)
